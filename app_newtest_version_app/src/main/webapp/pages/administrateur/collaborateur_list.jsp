@@ -22,43 +22,14 @@
 	</head>
 	<body class="main">
 	
-		<div class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a href="menu.php" class="navbar-brand">FORMATION</a>
-					<button class="navbar-toggle" type="button" data-toggle="collapse"
-						data-target="#navbar-main">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="navbar-collapse collapse" id="navbar-main">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" class="button-nav">Modifier Profil</a></li>
-						<li><a href="#" class="button-nav">Se déconnecter</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="user-banner">
-			<div class="container">
-				<div class="col-lg-9">
-					<ul class="nav navbar-nav navbar-left member-nav">
-						<li><a href="index_administrateur.html"
-							class="active button-nav">Gestion des Collaborateurs</a></li>
-						<li><a href="#" class="button-nav">Gestion des utilisateurs</a></li>
-						<li><a href="#" class="button-nav">Gestion des profils</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-3 member">
-					<div class="pull-left user-img">
-						<img src='<s:url value="/images/members/avatar.png"/>'>
-					</div>
-					<h2>Mouad Elfakir</h2>
-					<p>administrateur</p>
-				</div>
-			</div>
-		</div>
+		<!-- en-tête du page -->
+		
+		<s:include value="include/en_tete_page.jsp"></s:include>
+		
+		<!-- Fin en-tête du page -->
+		
+		
+		
 		<div class="container header-table">
 			<div class="col-lg-12">
 				<h3>
@@ -148,6 +119,13 @@
 		<s:include value="include/updateCollaborateurModal.jsp"></s:include>
 		
 		<!-- End Update Collaborateur Modal Form -->
+		
+		
+		<!-- Ajout Collaborateur Modal Form -->
+		
+		<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
+		
+		<!-- End Ajout Collaborateur Modal Form -->
 		
 		
 	

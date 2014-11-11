@@ -47,8 +47,6 @@ public class CollaborateurUpdateAction extends SqliBasicAction {
 	@Override
 	public String execute() throws Exception {
 		
-		
-		
 		try {
 			System.out.println(dateNaissance);
 			//After fields validation
@@ -61,8 +59,6 @@ public class CollaborateurUpdateAction extends SqliBasicAction {
 			collaborateur.setTelephoneCollaborateur(telephone);
 			collaborateur.setAdresseCollaborateur(adresse);
 			collaborateur.setSexeCollaborateur(sexe);
-			
-			System.out.println("step 2 ");
 			
 			
 			//Update Collaborateur
