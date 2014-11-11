@@ -116,7 +116,7 @@
 		
 		<!-- Update Collaborateur Modal Form -->
 		
-		<s:include value="include/update_collaborateur_codal.jsp"></s:include>
+		<s:include value="include/update_collaborateur_modal.jsp"></s:include>
 		
 		<!-- End Update Collaborateur Modal Form -->
 		
