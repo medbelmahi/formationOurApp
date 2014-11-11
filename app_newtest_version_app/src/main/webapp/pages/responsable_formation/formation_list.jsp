@@ -23,6 +23,33 @@ function jsonGetFormation(idFormation){
   	});
 }	
 
+function jsonGetSessionFormation(idSessionFormation){
+	$.getJSON('<s:url action="getSessionFormation" namespace="/ajax" />', {idSessionFormation : idSessionFormation}, function(jsonResponse) {
+		if(jsonResponse.status === "success"){
+			//get update SessionFormation Form			
+			var updateForm = document.getElementById("update_session_formation");
+			
+			//set inputs value from jsonResponse
+			updateForm.idSessionFormation.value = jsonResponse.idSessionFormation;
+			updateForm.titreSessionFormation.value = jsonResponse.titreSessionFormation;
+			updateForm.lieuSessionFormation.value = jsonResponse.lieuSessionFormation;
+			updateForm.dateDebutSessionFormation.value = jsonResponse.dateDebutSessionFormation;
+			updateForm.dateFinSessionFormation.value = jsonResponse.dateFinSessionFormation;
+			updateForm.desciptionSessionFormation.value = jsonResponse.desciptionSessionFormation;
+			
+			//select formateur option
+			for(var i=0; i<updateForm.idFormateur.length; i++){
+				if(jsonResponse.idFormateur == updateForm.idFormateur[i].value){
+					updateForm.idFormateur[i].selected=true;
+				}else{
+					updateForm.idFormateur[i].selected=false;
+				}
+			}
+			
+		}
+  	});
+}	
+
 function updateSessionForm(idFormation){
 	var addSessionForm = document.getElementById("add_session_formation");
 	addSessionForm.idFormation.value = idFormation;
@@ -62,13 +89,19 @@ function updateSessionForm(idFormation){
 				</ul>
 			</td>
 		</tr>
-		
+		<!-- SessionFormation iterator -->
 		<s:iterator value="sessionFormations">
 		<tr style="background-color:#eee;">
 			<td><s:property value="titreSessionFormation" /></td>
 			<td><s:property value="desciptionSessionFormation" /></td>
 			<td><s:property value="dateCreateionSessionFormation" /></td>
-			<td></td>
+			<td>
+				<ul>
+					<li><a href='javascript:void(0);' onclick="jsonGetSessionFormation(<s:property value="idSessionFormation"/>);">Modifier</a></li>
+					<li><a href='<s:url action="deleteSessionFormation" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Supprimer</a></li>
+					<li><a href='<s:url action="registerCollaborateurs" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Add Collaborateurs (+)</a></li>
+				</ul>
+			</td>
 		</tr>
 		</s:iterator>
 		
@@ -101,6 +134,31 @@ function updateSessionForm(idFormation){
 <h3>Add Session</h3>
 <s:form id="add_session_formation" action="addSessionFormation" method="post">
 	<s:hidden name="idFormation" />
+	<br>
+	titre: <s:textfield name="titreSessionFormation" />
+	<br>
+	lieu: <s:textfield name="lieuSessionFormation" />
+	<br>
+	dateDebut: <s:textfield name="dateDebutSessionFormation" />
+	<br>
+	dateFin: <s:textfield name="dateFinSessionFormation" />
+	<br>
+	Formateur: 
+	<select name="idFormateur" >
+		<s:iterator value="formateurs">
+			<option value='<s:property value="idUtilisateur" />'><s:property value="fullname" /></option>
+		</s:iterator>
+	</select>
+	<br>
+	description: <s:textarea name="desciptionSessionFormation" />
+	<br>
+	<s:submit value="Update" />
+</s:form>
+
+<hr>
+<h3>Update Session</h3>
+<s:form id="update_session_formation" action="updateSessionFormation" method="post">
+	<s:hidden name="idSessionFormation" />
 	<br>
 	titre: <s:textfield name="titreSessionFormation" />
 	<br>
