@@ -83,7 +83,7 @@
 											class="button-nav"> <span class="glyphicon glyphicon-file"
 												title="afficher"></span></a>
 												<!-- <a href='<s:url action="listHabilitationScores" ><s:param name="id"><s:property value="idCollaborateur"/></s:param></s:url>'>Habilitations</a> -->
-												</li>
+										</li>
 										<li><a href="message.html" class="button-nav"> <span
 												class="glyphicon glyphicon-envelope" title="envoyer message"></span></a>
 												<!-- <a href='<s:url action="sendEmailToCollaborateur" ><s:param name="id"><s:property value="idCollaborateur"/></s:param></s:url>'>Email</a> -->
