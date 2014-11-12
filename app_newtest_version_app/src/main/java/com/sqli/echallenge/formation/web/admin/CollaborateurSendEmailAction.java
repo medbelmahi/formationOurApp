@@ -28,6 +28,8 @@ public class CollaborateurSendEmailAction extends SqliBasicAction {
 	public SqliMail sqliMail;
 	
 	private Long id;
+	private String object;
+	private String msg;
 	
 	@Override
 	public String execute() throws Exception {
@@ -57,5 +59,23 @@ public class CollaborateurSendEmailAction extends SqliBasicAction {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getObject() {
+		return object;
+	}
+
+	public void setObject(String object) {
+		this.object = object;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	
+	
 
 }
