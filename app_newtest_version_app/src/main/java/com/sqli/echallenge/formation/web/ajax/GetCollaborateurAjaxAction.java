@@ -3,12 +3,16 @@
  */
 package com.sqli.echallenge.formation.web.ajax;
 
+import java.util.HashMap;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sqli.echallenge.formation.metier.CollaborateurMetier;
 import com.sqli.echallenge.formation.model.Collaborateur;
+import com.sqli.echallenge.formation.model.HabilitationScore;
 import com.sqli.echallenge.formation.util.SqliDate;
 import com.sqli.echallenge.formation.web.SqliBasicAction;
 
@@ -34,6 +38,8 @@ public class GetCollaborateurAjaxAction extends SqliBasicAction {
 	private String adresse;
 	private boolean sexe;
 	
+	private HashMap<String, Integer> habilitationScores = new HashMap<String, Integer>();
+	
 	@Override
 	public String execute() throws Exception {
 		try {
@@ -45,6 +51,12 @@ public class GetCollaborateurAjaxAction extends SqliBasicAction {
 			telephone = collaborateur.getTelephoneCollaborateur();
 			adresse = collaborateur.getAdresseCollaborateur();
 			sexe = collaborateur.isSexeCollaborateur();
+			
+			//Habilitations
+			Set<HabilitationScore> habilitations = collaborateur.getHabilitations();
+			for(HabilitationScore hs : habilitations){
+				habilitationScores.put(hs.getHabilitation().getNomHabilitation(), hs.getScoreHabilitation());
+			}
 			
 			status = ActionSupport.SUCCESS;
 			
@@ -125,6 +137,27 @@ public class GetCollaborateurAjaxAction extends SqliBasicAction {
 
 	public void setSexe(boolean sexe) {
 		this.sexe = sexe;
+	}
+
+	public HashMap<String, Integer> getHabilitationScores() {
+		return habilitationScores;
+	}
+
+	public void setHabilitationScores(HashMap<String, Integer> habilitationScores) {
+		this.habilitationScores = habilitationScores;
+	}
+	
+	public String getSexeString(){
+		if(sexe != true){
+			return "Male";
+		}
+		return "Female";
+	}
+	
+	public String getFullname(){
+		if(prenom==null || nom==null) return null;
+		
+		return prenom.substring(0, 1).toUpperCase() + prenom.substring(1) + " " + nom.toUpperCase();
 	}
 	
 }

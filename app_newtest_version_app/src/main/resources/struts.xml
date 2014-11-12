@@ -249,6 +249,18 @@
     		<result name="input" type="redirectAction">formations</result>
     		<result name="error" type="redirectAction">formations</result>
     	</action>
+    	
+    	<action name="collaborateurs" class="com.sqli.echallenge.formation.web.responsableformation.CollaborateurListAction">
+			<result name="success">/pages/responsable_formation/collaborateur_list.jsp</result>
+    		<result name="input" type="redirectAction">formations</result>
+    		<result name="error" type="redirectAction">formations</result>
+    	</action>
+    	
+    	<action name="inscrireCollaborateurs" class="com.sqli.echallenge.formation.web.responsableformation.CollaborateurInscrireAction">
+			<result name="success" type="redirectAction">formations</result>
+    		<result name="input" type="redirectAction">formations</result>
+    		<result name="error" type="redirectAction">formations</result>
+    	</action>
     </package>
     
      <package name="ajax" namespace="/ajax" extends="sqli_basic_package, json-default">
@@ -288,7 +300,11 @@
      	 	<result name="none" type="json" />
      	 </action>
      	 
-     	  <action name="getSessionFormation" class="com.sqli.echallenge.formation.web.ajax.GetSessionFormationAjaxAction">
+     	 <action name="getSessionFormation" class="com.sqli.echallenge.formation.web.ajax.GetSessionFormationAjaxAction">
+     	 	<result name="none" type="json" />
+     	 </action>
+     	 
+     	 <action name="inscrireCollaborateur" class="com.sqli.echallenge.formation.web.ajax.InscrireCollaborateurAjaxAction">
      	 	<result name="none" type="json" />
      	 </action>
      </package>

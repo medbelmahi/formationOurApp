@@ -15,6 +15,16 @@ public class SqliRandomGenerator {
 		}
 		return randStr.toString();
 	}
+	
+	public String generateRandomString(int length) {
+		StringBuffer randStr = new StringBuffer();
+		for (int i = 0; i < length; i++) {
+			int number = getRandomNumber();
+			char ch = CHAR_LIST.charAt(number);
+			randStr.append(ch);
+		}
+		return randStr.toString();
+	}
 
 	private int getRandomNumber() {
 		int randomInt = 0;

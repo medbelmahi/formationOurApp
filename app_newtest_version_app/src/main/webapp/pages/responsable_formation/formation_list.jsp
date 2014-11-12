@@ -99,7 +99,7 @@ function updateSessionForm(idFormation){
 				<ul>
 					<li><a href='javascript:void(0);' onclick="jsonGetSessionFormation(<s:property value="idSessionFormation"/>);">Modifier</a></li>
 					<li><a href='<s:url action="deleteSessionFormation" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Supprimer</a></li>
-					<li><a href='<s:url action="registerCollaborateurs" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Add Collaborateurs (+)</a></li>
+					<li><a href='<s:url action="collaborateurs" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Add Collaborateurs (+)</a></li>
 				</ul>
 			</td>
 		</tr>
