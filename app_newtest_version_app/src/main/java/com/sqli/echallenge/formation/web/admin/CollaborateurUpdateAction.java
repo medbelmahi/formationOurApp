@@ -129,7 +129,7 @@ public class CollaborateurUpdateAction extends SqliBasicAction {
 
 	@RequiredFieldValidator(shortCircuit=true)
 	@RequiredStringValidator(message="telephon", shortCircuit=true)
-	@RegexFieldValidator(type = ValidatorType.SIMPLE, regex = "^0?[5-6]{1}\\d{8}",message = "Please enter a valid phone number")
+	@RegexFieldValidator(type = ValidatorType.SIMPLE, regex = "^0[5-6]{1}\\d{8}",message = "Please enter a valid phone number")
 	public String getTelephone() {
 		return telephone;
 	}

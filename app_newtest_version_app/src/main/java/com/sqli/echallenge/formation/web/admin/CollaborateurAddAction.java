@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
+import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import com.sqli.echallenge.formation.metier.CollaborateurMetier;
 import com.sqli.echallenge.formation.model.Collaborateur;
 import com.sqli.echallenge.formation.web.SqliBasicAction;
@@ -97,7 +99,7 @@ public class CollaborateurAddAction extends SqliBasicAction {
 	}
 
 	@RequiredFieldValidator(shortCircuit=true)
-	@DateRangeFieldValidator(message="date", shortCircuit=true)
+	@DateRangeFieldValidator(message="dateFormat", dateFormat = "dd/MM/yyyy", shortCircuit=true)
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
@@ -108,6 +110,7 @@ public class CollaborateurAddAction extends SqliBasicAction {
 	
 	@RequiredFieldValidator(shortCircuit=true)
 	@RequiredStringValidator(message="telephone", shortCircuit=true)
+	@RegexFieldValidator(type = ValidatorType.SIMPLE, regex = "^0[5-6]{1}\\d{8}",message = "Please enter a valid phone number")
 	public String getTelephone() {
 		return telephone;
 	}

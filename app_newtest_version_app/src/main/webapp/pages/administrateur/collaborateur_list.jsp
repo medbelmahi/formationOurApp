@@ -37,11 +37,12 @@
 				</h3>
 	
 				<div class="col-lg-6">
-					<h4 class="add">
-						<span class="glyphicon glyphicon-plus-sign"></span> <a
-							href="ajouter_collaborateur.html">Ajouter collaborateur</a>
-					</h4>
-				</div>
+				<h4 class="add">
+					<span class="glyphicon glyphicon-plus-sign"></span> <a
+						data-toggle="modal" data-target="#addCollaborateurModal" href="#">Ajouter
+						collaborateur</a>
+				</h4>
+			</div>
 				<div class="col-lg-2"></div>
 				<div class="col-lg-4">
 					<div class="input-group">
@@ -188,7 +189,7 @@
 		<!-- Begin javascript For time picker -->
 			<script src='<s:url value="/lib/datetimepicker-master/jquery.datetimepicker.js"/>'></script>
 			<script>
-			$('#inputDateNaissance').datetimepicker({
+			$('.inputDateDeNaissance').datetimepicker({
 			  format:'d/m/Y', 
 			        lang:'fr',
 			        minDate:'1900/01/01',

@@ -9,7 +9,7 @@
 				<h4 class="modal-title" id="myModalLabel">Modification</h4>
 			</div>
 
-			<form id="update_collaborateur" action="updateCollaborateur"
+			<form data-toggle="validator" id="update_collaborateur" action="updateCollaborateur"
 				method="post">
 				<div class="modal-body">
 					<div class="col-lg-12 image">
@@ -20,14 +20,14 @@
 						<label for="inputLastName" class="col-lg-4 control-label">Nom</label>
 						<div class="col-lg-8">
 							<input autocomplete="off" name="nom" class="form-control"
-								id="inputLastName" placeholder="Nom" type="text">
+								id="inputLastName" placeholder="Nom" type="text" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputFirstName" class="col-lg-4 control-label">Prenom</label>
 						<div class="col-lg-8">
 							<input autocomplete="off" name="prenom" class="form-control"
-								id="inputFirstName" placeholder="Prenom" type="text">
+								id="inputFirstName" placeholder="Prenom" type="text" required>
 						</div>
 					</div>
 
@@ -35,7 +35,7 @@
 						<label for="inputEmail" class="col-lg-4 control-label">Email</label>
 						<div class="col-lg-8">
 							<input autocomplete="off" name="email" class="form-control"
-								id="inputEmail" placeholder="Email" type="email">
+								id="inputEmail" placeholder="Email" type="email" required>
 						</div>
 					</div>
 
@@ -43,9 +43,9 @@
 						<label for="inputDateNaissance" class="col-lg-4 control-label">Date
 							de Naissance</label>
 						<div class="col-lg-8">
-							<input autocomplete="off" name="dateNaissance"
-								class="form-control" id="inputDateNaissance"
-								placeholder="dateNaissance" type="text">
+							<input autocomplete="off" name="dateNaissance" pattern="^(\d{2})\/(\d{2})\/(\d{4})"
+								class="form-control inputDateDeNaissance" id="inputDateNaissance"
+								placeholder="dateNaissance" type="text" required>
 						</div>
 					</div>
 
@@ -53,8 +53,10 @@
 						<label for="inputTelephone" class="col-lg-4 control-label">Telephone</label>
 						<div class="col-lg-8">
 							<input autocomplete="off" name="telephone" class="form-control"
-								id="inputTelephone" placeholder="Ex : 0610807402" type="text">
+								id="inputTelephone" placeholder="Ex : 0610807402" type="text" pattern="^0[5-6]{1}\d{8}">
+							<div class="help-block with-errors">Ex : 0610807402</div>
 						</div>
+						
 					</div>
 					<div class="form-group">
 						<label for="inputAdress" class="col-lg-4 control-label">Adresse</label>
