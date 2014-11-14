@@ -31,15 +31,14 @@
         </div>
         <div class="login-wrap">
 
-				<!-- Message d'erreur -->
-				<s:if test="isSessionActionError()">
+			<!-- Message d'erreur -->
+			<s:if test="isSessionActionError()">
+				<h5 class="text-danger">
+					<s:property value="sessionActionErrorText" />
+				</h5>
+			</s:if>
 
-					<p class="text-danger">
-						<s:property value="sessionActionErrorText" />
-					</p>
-				</s:if>
-
-				<input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+			<input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
             <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
