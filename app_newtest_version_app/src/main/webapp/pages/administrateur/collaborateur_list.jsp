@@ -134,7 +134,7 @@
 				</div>
 			</div>
 			
-			<%-- <div id="notificationMsg" class="row">
+			<div id="notificationMsg" class="row">
 			      <div class="box">
 			      	<div class="box-content">
 			              <div class="alert alert-success alert-dismissable">
@@ -155,7 +155,7 @@
 			              </div>
 			            </div>
 			        </div>
-		      </div> --%>
+		      </div>
 			
 			<!-- begin row -->
 			<div class="row">
