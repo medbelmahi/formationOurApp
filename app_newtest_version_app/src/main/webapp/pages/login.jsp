@@ -24,12 +24,21 @@
 
 <div class="container">
 	
-    <s:form cssClass="form-signin" action="login" method="get">
+    <s:form cssClass="form-signin" action="login" method="post">
         <div class="form-signin-heading text-center">
             <h1 class="sign-title">Se connecter</h1>
             <img src="images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
+        
+        	<s:if test="isSessionMessageError()">
+	        	<div class="alert alert-danger">
+					<button type="button" class="close close-sm" data-dismiss="alert">
+	                    <i class="fa fa-times"></i>
+	                </button>
+	                <s:property value="sessionActionMessageText" />
+				</div>
+			</s:if>
             <input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
             <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
 
@@ -57,9 +66,6 @@
             </label><!-- End Remember me -->
 
         </div>
-
-        
-
     </s:form>
 	
 	<!-- Modal -->
@@ -85,7 +91,6 @@
             </div>
         </div>
         <!-- modal -->
-
 
 </div>
 
