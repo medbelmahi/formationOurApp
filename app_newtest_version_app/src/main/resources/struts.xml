@@ -47,6 +47,7 @@
     		<interceptor-ref name="sqliSessionValidatorStack" />
     		<result name="success" type="redirectAction">index</result>
     		<result name="input">/pages/login.jsp</result>
+    		<result name="error">/pages/login.jsp</result>
     	</action>
     	
     	<!-- Destroy Session and redirect to login -->

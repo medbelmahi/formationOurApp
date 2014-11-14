@@ -32,9 +32,9 @@ public class LoginAction extends SqliBasicAction {
 			
 		} catch (Exception e) {
 			//If user with (email, password) not exist
-			addActionError(getText("login.error.echec.conncetion"));
+			setSessionActionErrorText(getText("login.error.echec.conncetion"));
 
-			return ActionSupport.INPUT;
+			return ActionSupport.ERROR;
 		}
 	}
 	
