@@ -23,8 +23,8 @@
 <body class="login-body">
 
 <div class="container">
-
-    <s:form cssClass="form-signin" action="login" method="post">
+	
+    <s:form cssClass="form-signin" action="login" method="get">
         <div class="form-signin-heading text-center">
             <h1 class="sign-title">Se connecter</h1>
             <img src="images/login-logo.png" alt=""/>
@@ -34,6 +34,7 @@
             <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
+<%-- 				<s:submit cssClass="btn btn-lg btn-login btn-block" /> --%>
                 <i class="fa fa-check"></i>
             </button>
 			
@@ -52,11 +53,16 @@
                     <a data-toggle="modal" href="#myModal"> Mot de passe oublié ?</a>
 
                 </span>
+                
             </label><!-- End Remember me -->
 
         </div>
 
-        <!-- Modal -->
+        
+
+    </s:form>
+	
+	<!-- Modal -->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -64,21 +70,22 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Mot de passe oublié ?</h4>
                     </div>
-                    <div class="modal-body">
-                        <p>Entrez votre adresse e-mail ci-dessous pour réinitialiser votre mot de passe.</p>
-                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn btn-default" type="button">Annuler</button>
-                        <button class="btn btn-primary" type="button">Envoyer</button>
-                    </div>
+                    <form action="theAction" id="theId">
+	                    <div class="modal-body">
+	                        <p>Entrez votre adresse e-mail ci-dessous pour réinitialiser votre mot de passe.</p>
+	                        <input type="text" name="email_" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+	
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button data-dismiss="modal" class="btn btn-default" type="button">Annuler</button>
+	                        <button class="btn btn-primary" type="button">Envoyer</button>
+	                    </div>
+	                </form>
                 </div>
             </div>
         </div>
         <!-- modal -->
 
-    </s:form>
 
 </div>
 
