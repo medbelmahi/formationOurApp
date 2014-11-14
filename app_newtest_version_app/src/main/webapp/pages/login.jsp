@@ -31,19 +31,20 @@
         </div>
         <div class="login-wrap">
         
-        	<s:if test="isSessionMessageError()">
+        	<!-- Message d'erreur -->
+        	<s:if test="isSessionActionError()">
 	        	<div class="alert alert-danger">
 					<button type="button" class="close close-sm" data-dismiss="alert">
 	                    <i class="fa fa-times"></i>
 	                </button>
-	                <s:property value="sessionActionMessageText" />
+	                <s:property value="sessionActionErrorText" />
 				</div>
 			</s:if>
+			
             <input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
             <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
-<%-- 				<s:submit cssClass="btn btn-lg btn-login btn-block" /> --%>
                 <i class="fa fa-check"></i>
             </button>
 			
