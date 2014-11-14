@@ -30,18 +30,16 @@
             <img src="images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
-        
-        	<!-- Message d'erreur -->
-        	<s:if test="isSessionActionError()">
-	        	<div class="alert alert-danger">
-					<button type="button" class="close close-sm" data-dismiss="alert">
-	                    <i class="fa fa-times"></i>
-	                </button>
-	                <h6><s:property value="sessionActionErrorText" /></h6>
-				</div>
-			</s:if>
-			
-            <input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+
+				<!-- Message d'erreur -->
+				<s:if test="isSessionActionError()">
+
+					<p class="text-danger">
+						<s:property value="sessionActionErrorText" />
+					</p>
+				</s:if>
+
+				<input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
             <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
