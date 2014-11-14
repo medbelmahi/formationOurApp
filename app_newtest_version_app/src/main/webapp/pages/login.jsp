@@ -37,7 +37,7 @@
 					<button type="button" class="close close-sm" data-dismiss="alert">
 	                    <i class="fa fa-times"></i>
 	                </button>
-	                <s:property value="sessionActionErrorText" />
+	                <h6><s:property value="sessionActionErrorText" /></h6>
 				</div>
 			</s:if>
 			
