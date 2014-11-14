@@ -38,8 +38,8 @@
 				</h5>
 			</s:if>
 
-			<input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
-            <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
+			<s:textfield type="text" cssClass="form-control" placeholder="Email" autofocus="true" name="email" required="true" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
+            <s:textfield type="password" cssClass="form-control" placeholder="Mot de passe" required="true" name="password" />
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
                 <i class="fa fa-check"></i>
