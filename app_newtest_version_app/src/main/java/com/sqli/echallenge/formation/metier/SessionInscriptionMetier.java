@@ -17,6 +17,7 @@ public interface SessionInscriptionMetier {
 	public void addSessionInscription(SessionInscription sessionInscription) throws Exception;
 	public void updateSessionInscription(SessionInscription sessionInscription) throws Exception;
 	public List<SessionInscription> getAllSessionInscriptions(Long idSessionFormation) throws Exception;
+	public void removeSessionInscriptionOfCollaborateur(Long idCollaborateur) throws Exception;
 	public void removeAllSessionInscription(Long idSessionFormation) throws Exception;
 	public List<Collaborateur> getRegistredCollaborateurs(Long idSessionFormation) throws Exception;
 	public List<Collaborateur> getUnregistredCollaborateurs(Long idSessionFormation) throws Exception;

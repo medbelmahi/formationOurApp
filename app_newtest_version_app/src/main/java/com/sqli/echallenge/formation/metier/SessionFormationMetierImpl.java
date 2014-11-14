@@ -23,6 +23,9 @@ public class SessionFormationMetierImpl implements SessionFormationMetier {
 	@Autowired
 	private SessionFormationDao dao;
 	
+	@Autowired
+	private SessionInscriptionMetier sessionInscriptionMetie;
+	
 	public SessionFormation getSessionFormation(Long idSessionFormation) throws Exception {
 		return dao.getSessionFormation(idSessionFormation);
 	}
@@ -40,6 +43,10 @@ public class SessionFormationMetierImpl implements SessionFormationMetier {
 	}
 
 	public void removeSessionFormation(Long idSessionFormation) throws Exception {
+		//remove SessionInscription
+		sessionInscriptionMetie.removeAllSessionInscription(idSessionFormation);
+		
+		//remove SessionFormation
 		dao.removeSessionFormation(idSessionFormation);
 	}
 
@@ -53,6 +60,15 @@ public class SessionFormationMetierImpl implements SessionFormationMetier {
 
 	public void setDao(SessionFormationDao dao) {
 		this.dao = dao;
+	}
+
+	public SessionInscriptionMetier getSessionInscriptionMetie() {
+		return sessionInscriptionMetie;
+	}
+
+	public void setSessionInscriptionMetie(
+			SessionInscriptionMetier sessionInscriptionMetie) {
+		this.sessionInscriptionMetie = sessionInscriptionMetie;
 	}
 
 }

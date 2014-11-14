@@ -23,6 +23,9 @@ public class CollaborateurMetierImpl implements CollaborateurMetier {
 	@Autowired
 	private CollaborateurDao dao;
 	
+	@Autowired
+	private SessionInscriptionMetier sessionInscriptionMetier;
+	
 	public Collaborateur getCollaborateur(Long idCollaborateur) throws Exception {
 		return dao.getCollaborateur(idCollaborateur);
 	}
@@ -32,6 +35,9 @@ public class CollaborateurMetierImpl implements CollaborateurMetier {
 	}
 
 	public void removeCollaborateur(Long idCollaborateur) throws Exception {
+		//remove sessionInscription before
+		sessionInscriptionMetier.removeSessionInscriptionOfCollaborateur(idCollaborateur);
+		//remove collaborateur
 		dao.removeCollaborateur(idCollaborateur);
 	}
 
@@ -49,6 +55,15 @@ public class CollaborateurMetierImpl implements CollaborateurMetier {
 
 	public void setDao(CollaborateurDao dao) {
 		this.dao = dao;
+	}
+
+	public SessionInscriptionMetier getSessionInscriptionMetier() {
+		return sessionInscriptionMetier;
+	}
+
+	public void setSessionInscriptionMetier(
+			SessionInscriptionMetier sessionInscriptionMetier) {
+		this.sessionInscriptionMetier = sessionInscriptionMetier;
 	}
 
 }

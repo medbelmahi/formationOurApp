@@ -8,7 +8,7 @@ import java.util.List;
 import com.sqli.echallenge.formation.model.Formation;
 
 /**
- * @author Mouad
+ * @author Mouad + Sami
  *
  */
 public interface FormationDao {

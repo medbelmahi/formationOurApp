@@ -39,6 +39,10 @@ public class SessionInscriptionMetierImpl implements SessionInscriptionMetier {
 	public List<SessionInscription> getAllSessionInscriptions(Long idSessionFormation) throws Exception {
 		return dao.getAllSessionInscriptions(idSessionFormation);
 	}
+	
+	public void removeSessionInscriptionOfCollaborateur(Long idCollaborateur) throws Exception {
+		dao.removeSessionInscriptionOfCollaborateur(idCollaborateur);
+	}
 
 	public void removeAllSessionInscription(Long idSessionFormation) throws Exception {
 		dao.removeAllSessionInscription(idSessionFormation);
@@ -59,5 +63,5 @@ public class SessionInscriptionMetierImpl implements SessionInscriptionMetier {
 	public void setDao(SessionInscriptionDao dao) {
 		this.dao = dao;
 	}
-	
+
 }

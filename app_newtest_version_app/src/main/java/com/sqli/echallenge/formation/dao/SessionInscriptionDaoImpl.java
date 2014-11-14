@@ -48,6 +48,13 @@ public class SessionInscriptionDaoImpl implements SessionInscriptionDao {
 		
 		return query.getResultList();
 	}
+	
+	public void removeSessionInscriptionOfCollaborateur(Long idCollaborateur) throws Exception {
+		Query query = entityManager.createNativeQuery("DELETE FROM SESSION_INSCRIPTION WHERE ID_COLLABORATEUR=:idCollaborateur");
+		query.setParameter("idCollaborateur", idCollaborateur);
+		
+		query.executeUpdate();
+	}
 
 	public void removeAllSessionInscription(Long idSessionFormation) throws Exception {
 		Query query = entityManager.createNativeQuery("DELETE FROM SESSION_INSCRIPTION WHERE ID_SESSION_FORMATION=:idSessionFormation");
