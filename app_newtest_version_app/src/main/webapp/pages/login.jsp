@@ -24,15 +24,14 @@
 
 <div class="container">
 
-    <form class="form-signin" action="login" method="post">
+    <s:form cssClass="form-signin" action="login" method="post">
         <div class="form-signin-heading text-center">
             <h1 class="sign-title">Se connecter</h1>
             <img src="images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
-            <input type="text" class="form-control" placeholder="Email" autofocus name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
-<%-- 			<s:textfield name="email" cssClass="form-control" placehoder="Email" autofocus="true" type="email" /> --%>
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="text" class="form-control" placeholder="Email" autofocus name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+            <input type="password" class="form-control" placeholder="Mot de passe" required name="password">
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
                 <i class="fa fa-check"></i>
@@ -79,7 +78,7 @@
         </div>
         <!-- modal -->
 
-    </form>
+    </s:form>
 
 </div>
 
