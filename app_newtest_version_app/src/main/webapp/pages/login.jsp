@@ -30,7 +30,7 @@
             <img src="images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
-            <input type="email" class="form-control" placeholder="Email" autofocus name="email">
+            <input type="text" class="form-control" placeholder="Email" autofocus name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
 <%-- 			<s:textfield name="email" cssClass="form-control" placehoder="Email" autofocus="true" type="email" /> --%>
             <input type="password" class="form-control" placeholder="Password" name="password">
 
