@@ -62,8 +62,8 @@ public class CollaborateurUpdateAction extends SqliBasicAction {
 			
 			
 			//Update Collaborateur
-			setSessionActionMessageText(getText("updateCollaborateur.error.update.success"));
 			collaborateurMetier.updateCollaborateur(collaborateur);
+			setSessionActionMessageText(getText("updateCollaborateur.error.update.success"));
 			
 			//Send Email
 			//....
@@ -71,8 +71,7 @@ public class CollaborateurUpdateAction extends SqliBasicAction {
 			
 		} catch (Exception e) {
 			//Update Fail
-			setSessionActionErrorText("updateCollaborateur.error.email.deplicated");
-			e.printStackTrace();
+			setSessionActionErrorText(getText("updateCollaborateur.error.email.deplicated"));
 			return ActionSupport.ERROR;
 		}
 	}

@@ -4706,3 +4706,16 @@ ol.comment-list {
     border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
+/* Notification custom */
+.alert-danger {
+	background-color: red;
+	border-color: #ebccd1;
+	color: white;
+}
+
+.alert-info {
+	background-color: green;
+	border-color: #bce8f1;
+	color: white;
+}
