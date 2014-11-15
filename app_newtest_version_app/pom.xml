@@ -22,6 +22,13 @@
 		    <artifactId>mail</artifactId>
 		    <version>1.4</version>
 	    </dependency>
+	    <!-- Velocity Api -->
+	    <dependency>
+			<groupId>velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.5</version>
+		</dependency>
+		
     
 		<!-- Spring -->
 		<dependency>

@@ -36,7 +36,7 @@ public class UtilisateurSendEmailAction extends SqliBasicAction {
 			Utilisateur utilisateur = UtilisateurMetier.getUtilisateur(id);
 			
 			//Send Email
-			sqliMail.sendMail(getText("email.test.text"), utilisateur.getEmailUtilisateur(), "Me", "My Content");
+			sqliMail.sendMail(utilisateur.getEmailUtilisateur(), "com/sqli/echallenge/formation/web/mail/config-utilisateur-email-template.vm", utilisateur);
 			setSessionActionMessageText(getText("sendEmailToUtilisateur.message.send.success"));
 			return ActionSupport.SUCCESS;
 			
