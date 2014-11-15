@@ -1,23 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<div style="display: none;" aria-hidden="true"
-	aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
-	id="addCollaborateurModal" class="modal fade">
+<div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addCollaborateurModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button aria-hidden="true" data-dismiss="modal" class="close"
-					type="button">×</button>
+				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
 				<h4 class="modal-title">Ajouter Nouveau Collaborateur</h4>
 			</div>
 
 			<div class="modal-body">
-
 				<div class="panel-body">
 					<form data-toggle="validator" id="add_collaborateur" action="addCollaborateur" method="post" role="form" class="form-horizontal adminex-form">
-
 						<div class="form-group">
 							<label class="control-label col-sm-2 col-sm-2">Image de profil</label>
 							<div class="col-sm-10">
@@ -32,9 +26,6 @@
 									</div>
 								</div>
 								<br>
-								<!-- <span class="label label-danger ">NOTE!</span> <span>
-								Attached image thumbnail is supported in Latest Firefox, Chrome,
-								Opera, Safari and Internet Explorer 10 only </span> -->
 							</div>
 						</div>
 
@@ -64,7 +55,8 @@
 							<div id="thedateDiv_2" class="">
 
 								<div data-date-viewmode="years" data-date-format="dd/mm/yyyy" data-date="12/02/1990" class="col-sm-9 input-append date dpYears">
-									<input name="dateNaissance" pattern="^(\d{2})\/(\d{2})\/(\d{4})" type="text" readonly="readonly" value="12/02/1990" size="16" class="form-control"> <span class="input-group-btn add-on">
+									<input name="dateNaissance" pattern="^(\d{2})\/(\d{2})\/(\d{4})" type="text" readonly="readonly" value="12/02/1990" size="16" class="form-control"> 
+									<span class="input-group-btn add-on">
 										<button class="btn btn-primary" type="button">
 											<i class="fa fa-calendar"></i>
 										</button>
