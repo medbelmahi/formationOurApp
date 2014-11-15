@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sqli.echallenge.formation.web.admin;
+package com.sqli.echallenge.formation.web.ajax;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import com.sqli.echallenge.formation.web.SqliBasicAction;
  *
  */
 @Controller
-public class CollaborateurSendEmailAction extends SqliBasicAction {
+public class CollaborateurSendEmailAjaxAction extends SqliBasicAction {
 	private static final long serialVersionUID = -4990092682111233905L;
 
 	@Autowired
@@ -31,6 +31,7 @@ public class CollaborateurSendEmailAction extends SqliBasicAction {
 	private Long id;
 	private String object;
 	private String msg;
+	private String status;
 	
 	@Override
 	public String execute() throws Exception {
@@ -44,14 +45,17 @@ public class CollaborateurSendEmailAction extends SqliBasicAction {
 			sqliMail.sendMail(collaborateur.getEmailCollaborateur(), "com/sqli/echallenge/formation/web/mail/config-collaborateur-email-template.vm", emailObject);
 //			sqliMail.sendMail(collaborateur.getEmailCollaborateur(), "com/sqli/echallenge/formation/web/mail/config-collaborateur-email-template.vm", collaborateur);
 			setSessionActionMessageText(getText("sendEmailToCollaborateurAction.error.send.success"));
-			return ActionSupport.SUCCESS;
+			
+			
+			status =  ActionSupport.SUCCESS;
 			
 		}catch(Exception e){
 			//AddErrorMessage
 			setSessionActionErrorText(getText("sendEmailToCollaborateurAction.error.send.fail"));
-			return ActionSupport.ERROR;
+			status = ActionSupport.ERROR;
 		}
 		
+		return ActionSupport.NONE;
 	}
 
 	@RequiredFieldValidator(shortCircuit=true)
@@ -77,6 +81,14 @@ public class CollaborateurSendEmailAction extends SqliBasicAction {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

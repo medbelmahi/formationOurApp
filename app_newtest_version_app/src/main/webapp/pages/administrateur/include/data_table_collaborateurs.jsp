@@ -49,7 +49,30 @@
 												value="telephoneCollaborateur" /></td>
 										<td class="center hidden-phone "><s:property
 												value="sexeString" /></td>
-										<td class="center hidden-phone ">A</td>
+										<td class="center hidden-phone ">
+											<ul style="list-style: none;" class="navbar-nav nav-options">
+												<li style="padding-left: 10px;">
+													<a href='javascript:void(0);'
+													   onclick="jsonGetCollaborateur(<s:property value="idCollaborateur"/>);" 
+													   title="Mise à jour">
+														<i class="fa fa-pencil"></i>
+													</a>
+												</li>
+												
+												<li style="padding-left: 15px;">
+													<a data-href=<s:url action="deleteCollaborateur" ><s:param name="id"><s:property value="idCollaborateur"/></s:param></s:url> data-toggle="confirmation" data-original-title="" title="Supprimer ?" >
+														<i class="fa fa-times"></i>
+													</a>
+												</li>
+												<li style="padding-left: 15px;">
+													<a href='javascript:void(0);'
+													   onclick="jsonGetCollaborateur_forSendEmail(<s:property value="idCollaborateur"/>);" 
+													   title="Envoyer un email">
+														<i class="fa fa-envelope"></i>
+													</a>
+												</li>
+											</ul>
+										</td>
 										<td style="display: none;"><s:property
 												value="adresseCollaborateur" /></td>
 										<td style="display: none;"><s:property

@@ -49,26 +49,26 @@
 						</div>
 
 						<div class="form-group">
-							<label for="inputLastName">Nom</label> <input autocomplete="off"
+							<label for="inputLastName_2">Nom</label> <input autocomplete="off"
 								name="nom" class="form-control" id="inputLastName_2"
 								placeholder="Nom" type="text" required>
 						</div>
 
 						<div class="form-group">
-							<label for="inputFirstName">Prenom</label> <input
+							<label for="inputFirstName_2">Prenom</label> <input
 								autocomplete="off" name="prenom" class="form-control"
 								id="inputFirstName_2" placeholder="Prenom" type="text" required>
 						</div>
 
 						<div class="form-group">
-							<label for="inputEmail">Email</label> <input autocomplete="off"
+							<label for="inputEmail_2">Email</label> <input autocomplete="off"
 								name="email" class="form-control" id="inputEmail_2"
 								placeholder="Email" type="email" required>
 						</div>
 
 						<div class="form-group">
-							<label for="thedateDiv" class="control-label">Date de naissance</label>
-							<div id="thedateDiv" class="">
+							<label for="thedateDiv_2" class="control-label">Date de naissance</label>
+							<div id="thedateDiv_2" class="">
 
 								<div data-date-viewmode="years" data-date-format="dd/mm/yyyy"
 									data-date="12/02/1990" class="input-append date dpYears">

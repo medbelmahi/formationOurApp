@@ -313,5 +313,9 @@
      	 <action name="sendEmailToCollaborateur" class="com.sqli.echallenge.formation.web.ajax.SendEmailToCollaborateurAjaxAction">
      	 	<result name="none" type="json" />
      	 </action>
+     	 
+     	 <action name="sendEmailToCollaborateurAjax" class="com.sqli.echallenge.formation.web.ajax.CollaborateurSendEmailAjaxAction">
+     	 	<result name="none" type="json" />
+     	 </action>
      </package>
 </struts>

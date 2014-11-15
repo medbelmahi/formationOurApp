@@ -50,12 +50,18 @@
     <!--tags input-->
     <link rel="stylesheet" type="text/css" href='<s:url value="/js/jquery-tags-input/jquery.tagsinput.css"/>' />
     
-      <!--pickers css-->
-	  <link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-datepicker/css/datepicker-custom.css"/>' />
-	  <link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-timepicker/css/timepicker.css"/>' />
-	  <link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-colorpicker/css/colorpicker.css"/>' />
-	  <link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-daterangepicker/daterangepicker-bs3.css"/>' />
-	  <link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-datetimepicker/css/datetimepicker-custom.css"/>' />
+	<!--pickers css-->
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-datepicker/css/datepicker-custom.css"/>' />
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-timepicker/css/timepicker.css"/>' />
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-colorpicker/css/colorpicker.css"/>' />
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-daterangepicker/daterangepicker-bs3.css"/>' />
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-datetimepicker/css/datetimepicker-custom.css"/>' />
+	
+	<!-- wysihtml5 -->
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>' />
+	
+	<!--gritter css-->
+	<link rel="stylesheet" type="text/css" href='<s:url value="/js/gritter/css/jquery.gritter.css"/>' />
 	
 	<!-- initial style -->
 	<link href='<s:url value="/css/style.css"/>' rel="stylesheet">
@@ -143,14 +149,14 @@
 			
 			<!-- Update Collaborateur Modal Form -->
 		
-<%-- 			<s:include value="include/update_collaborateur_modal.jsp"></s:include> --%>
+			<s:include value="include/update_collaborateur_modal.jsp"></s:include>
 		
 			<!-- End Update Collaborateur Modal Form -->
 			
 			
 			<!-- Ajout Collaborateur Modal Form -->
 			
-				<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
+			<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
 			
 			<!-- End Ajout Collaborateur Modal Form -->
 			
@@ -158,7 +164,7 @@
 		
 			<!-- Begin Send Message to collaborateur Modal -->
 			
-			
+			<s:include value="include/send_msg_collaborateur_modal.jsp"></s:include>	
 			
 			<!-- End Send Message to collaborateur Modal -->
 			
@@ -224,10 +230,141 @@
 	
 	<!--pickers initialization-->
 	<script src='<s:url value="/js/pickers-init.js"/>'></script>
-
-
+	
+	
+	<!-- bootstrap-wysihtml5 -->
+	<script type="text/javascript" src='<s:url value="/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"/>'></script>
+	<script type="text/javascript" src='<s:url value="/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"/>'></script>
+	<script>
+	    jQuery(document).ready(function(){
+	         $('.wysihtml5').wysihtml5();
+	    });
+	</script>
+	
+	
 	<!--common scripts for all pages-->
 	<script src='<s:url value="/js/scripts.js"/>'></script>
+	
+	
+	<!-- bootstrap confirmation tool -->
+		<script src='<s:url value="/lib/BootstrapConfirmation_files/bootstrap-transition.js"/>'></script>
+		<script src='<s:url value="/lib/BootstrapConfirmation_files/bootstrap-tooltip.js"/>'></script>
+		<script src='<s:url value="/lib/BootstrapConfirmation_files/holder.js"/>'></script>
+		<script src='<s:url value="/lib/BootstrapConfirmation_files/prettify.js"/>'></script>
+		<script src='<s:url value="/lib/BootstrapConfirmation_files/application.js"/>'></script>
+		<script src='<s:url value="/lib/BootstrapConfirmation_files/bootstrap-confirmation.js"/>'></script>
+	<!-- end bootstrap confirmation tool -->
+	
+	
+	<!--gritter script-->
+	<script type="text/javascript" src='<s:url value="/js/gritter/js/jquery.gritter.js"/>'></script>
+	<script src='<s:url value="/js/gritter/js/gritter-init.js"/>' type="text/javascript"></script>
+	
+	<!-- Remplir Update Modal -->
+		<script type="text/javascript">
+		function jsonGetCollaborateur(idCollaborateur){
+			//make ajax request to /ajax/getCollaborateur?idCollaborateur=x
+			$.getJSON('<s:url action="getCollaborateur" namespace="/ajax" />', {idCollaborateur : idCollaborateur}, function(jsonResponse) {
+				//if satuts == "success" , do
+				if(jsonResponse.status === "success"){
+					//get update Form			
+					var updateForm = document.getElementById("update_collaborateur");
+					
+					//set inputs value from jsonResponse
+					document.getElementById("idCollaborateur").value = jsonResponse.idCollaborateur;
+					document.getElementById("inputLastName").value = jsonResponse.nom;
+					document.getElementById("inputFirstName").value = jsonResponse.prenom;
+					document.getElementById("inputEmail").value = jsonResponse.email;
+					document.getElementById("inputTelephone").value = jsonResponse.telephone;
+					document.getElementById("inputDateNaissance").value = jsonResponse.dateNaissance;
+					document.getElementById("inputAdress").value = jsonResponse.adresse; 
+					
+					//check sexe option
+					if(jsonResponse.sexe == "true"){
+						document.getElementById("optionHomme").checked = true;
+						document.getElementById("optionFemme").checked = false;
+					}else{
+						document.getElementById("optionFemme").checked = true;
+						document.getElementById("optionHomme").checked = false;
+						var element = $(".iradio_square-red");
+						element.addClass("checked");
+					}
+				}
+		  	});
+			
+			$('#updateModal').modal('show');
+		};
+		
+		function jsonGetCollaborateur_forSendEmail(idCollaborateur){
+			//make ajax request to /ajax/getCollaborateur?idCollaborateur=x
+			$.getJSON('<s:url action="getCollaborateur" namespace="/ajax" />', {idCollaborateur : idCollaborateur}, function(jsonResponse) {
+				//if satuts == "success" , do
+				if(jsonResponse.status === "success"){
+					
+					//set inputs value from jsonResponse
+					document.getElementById("idCollaborateur_sendMessage").value = jsonResponse.idCollaborateur;
+					var fullName = jsonResponse.nom + " " + jsonResponse.prenom;
+					document.getElementById("fullnameTo").innerHTML = fullName;
+					document.getElementById("to").value = jsonResponse.email;
+// 					document.getElementById("inputTelephone").value = jsonResponse.telephone;
+// 					document.getElementById("inputDateNaissance").value = jsonResponse.dateNaissance;
+// 					document.getElementById("inputAdress").value = jsonResponse.adresse; 
+					
+					
+					
+					//check sexe option
+					/* if(jsonResponse.sexe == "true"){
+						document.getElementById("optionHomme").checked = true;
+						document.getElementById("optionFemme").checked = false;
+					}else{
+						document.getElementById("optionFemme").checked = true;
+						document.getElementById("optionHomme").checked = false;
+						var element = $(".iradio_square-red");
+						element.addClass("checked");
+					} */
+				}
+		  	});
+			
+			$('#sendMessageModal').modal('show');
+		};
+		</script>
+	<!-- End Remplir Update Modal -->
+	
+	
+	<script type="text/javascript">
+		function sendMessageToCollaboroateur_ajax(){
+			var idCollaborateur = document.getElementById("idCollaborateur_sendMessage").value;
+			var object = document.getElementById("subject").value;
+			var msg = document.getElementById("msg_").value;
+			
+			if(idCollaborateur != "" && object != "" && msg != ""){
+				$('#sendMessageModal').modal('hide');
+				$.getJSON('<s:url action="sendEmailToCollaborateurAjax" namespace="/ajax" />', {id : idCollaborateur, object : object, msg : msg}, function(jsonResponse) {
+					//if satuts == "success" , do
+					if(jsonResponse.status === "success"){
+						
+						$.gritter.add({
+				            // (string | mandatory) the heading of the notification
+				            title: 'Message!',
+				            // (string | mandatory) the text inside the notification
+				            text: 'Votre message été bien envoyé'
+				        });
+						
+						console.log(jsonResponse);
+					}else
+						{
+							alert("message envoyé");
+						}
+			  	});
+			}else
+				{
+					alert("remplir tout les champ");
+				}
+			
+		}
+	</script>
+	
+	
 	
 </body>
 </html>

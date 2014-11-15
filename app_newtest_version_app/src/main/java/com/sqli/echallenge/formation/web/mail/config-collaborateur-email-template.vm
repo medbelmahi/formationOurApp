@@ -4,9 +4,11 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<p>Bonjour ${model.fullname}</p>
+		<p>Bonjour ${model.collaborateur.fullname}</p>
+		<p>${model.msg}</p>
+		<br /><br />
 		<p>Vous trouvez ci-dessous les détails de votre profil:</p>
-		<p>Email: ${model.emailCollaborateur}</p>
-		<p>Sexe: ${model.sexeString}</p>
+		<p>Email: ${model.collaborateur.emailCollaborateur}</p>
+		<p>Sexe: ${model.collaborateur.sexeString}</p>
 	</body>
 </html>
