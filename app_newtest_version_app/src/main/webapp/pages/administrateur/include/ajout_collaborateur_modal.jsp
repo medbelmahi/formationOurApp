@@ -67,8 +67,8 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-md-4">Date de naissance</label>
-							<div class="col-md-8 col-xs-11">
+							<label for="thedateDiv" class="control-label">Date de naissance</label>
+							<div id="thedateDiv" class="">
 
 								<div data-date-viewmode="years" data-date-format="dd/mm/yyyy"
 									data-date="12/02/1990" class="input-append date dpYears">
@@ -81,7 +81,6 @@
 										</button>
 									</span>
 								</div>
-								<span class="help-block">Choisir une date</span>
 							</div>
 						</div>
 
