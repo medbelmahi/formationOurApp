@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="shortcut icon" href="#" type="image/png">
 
-    <title>Login</title>
+    <title>JFormation : Login</title>
 
     <link href='<s:url value="/css/style.css"/>' rel="stylesheet">
     <link href='<s:url value="/css/style-responsive.css"/>' rel="stylesheet">

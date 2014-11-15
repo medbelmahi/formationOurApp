@@ -16,6 +16,41 @@
   	<link href='<s:url value="/js/advanced-datatable/css/demo_table.css"/>' rel="stylesheet" />
   	<link rel="stylesheet" href='<s:url value="/js/data-tables/DT_bootstrap.css"/>' />
 	
+	<!--ios7-->
+    <link rel="stylesheet" type="text/css" href="js/ios-switch/switchery.css" />
+
+    <!--icheck-->
+    <link href="js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/green.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/blue.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/yellow.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/purple.css" rel="stylesheet">
+
+    <link href="js/iCheck/skins/square/square.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/green.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/blue.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/yellow.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/purple.css" rel="stylesheet">
+
+    <link href="js/iCheck/skins/flat/grey.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/yellow.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/purple.css" rel="stylesheet">
+
+    <!--multi-select-->
+    <link rel="stylesheet" type="text/css" href="js/jquery-multi-select/css/multi-select.css" />
+
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+
+    <!--tags input-->
+    <link rel="stylesheet" type="text/css" href="js/jquery-tags-input/jquery.tagsinput.css" />
+	
+	<!-- initial style -->
 	<link href='<s:url value="/css/style.css"/>' rel="stylesheet">
 	<link href='<s:url value="/css/style-responsive.css"/>' rel="stylesheet">
 
@@ -63,57 +98,31 @@
 	            </div>
         	</div><!-- present working link End-->
 			
+			<!-- Data table des collaborateurs Start -->
+				<s:include value="include/data_table_collaborateurs.jsp"></s:include>
+			<!-- Data table des collaborateurs End -->
 			
-			<div class="row">
-					<div class="col-sm-12">
-						<section class="panel">
-							<header class="panel-heading">
-								DataTables hidden row details example <span
-									class="tools pull-right"> <a href="javascript:;"
-									class="fa fa-chevron-down"></a> <a href="javascript:;"
-									class="fa fa-times"></a>
-								</span>
-							</header>
-							<div class="panel-body">
-								<div class="adv-table">
-									<div id="hidden-table-info_wrapper"
-										class="dataTables_wrapper form-inline" role="grid">
-										
-										<table aria-describedby="hidden-table-info_info"
-											class="display table table-bordered dataTable"
-											id="hidden-table-info">
-											<thead>
-												<tr role="row">
-													<th>Nom & Prénom</th>
-													<th>Email</th>
-													<th>Telephone</th>
-													<th>Sexe</th>
-													<th>Options</th>
-												</tr>
-											</thead>
-
-											<tbody aria-relevant="all" aria-live="polite" role="alert">
-												<s:iterator value="collaborateurs">
-													<tr class="gradeA odd"> 
-														<td class="  sorting_1"><s:property value="fullname" /></td>
-														<td class=" "><s:property value="emailCollaborateur" /></td>
-														<td class="hidden-phone "><s:property value="telephoneCollaborateur" /></td>
-														<td class="center hidden-phone "><s:property value="sexeString" /></td>
-														<td class="center hidden-phone ">A</td>
-														<!-- <td class="hiden-items" >amiral</td>
-														<td class="hiden-items" >mohamed</td>
-														<td class="hiden-items" >mouad</td> -->
-													</tr>
-												</s:iterator>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</section>
-					</div>
-				</div>
 			
+			<!-- Update Collaborateur Modal Form -->
+		
+<%-- 			<s:include value="include/update_collaborateur_modal.jsp"></s:include> --%>
+		
+			<!-- End Update Collaborateur Modal Form -->
+			
+			
+			<!-- Ajout Collaborateur Modal Form -->
+			
+				<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
+			
+			<!-- End Ajout Collaborateur Modal Form -->
+			
+			
+		
+			<!-- Begin Send Message to collaborateur Modal -->
+			
+			
+			
+			<!-- End Send Message to collaborateur Modal -->
 			
         </div>
         <!--body wrapper end-->

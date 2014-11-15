@@ -1,4 +1,58 @@
-<div class="modal fade" id="addCollaborateurModal" tabindex="-1" role="dialog"
+<div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addCollaborateurModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+				<h4 class="modal-title">Ajouter Nouveau Collaborateur</h4>
+			</div>
+			<form data-toggle="validator" id="add_collaborateur"
+				action="addCollaborateur" method="post">
+				
+				<div class="modal-body">
+				
+					<div class="form-group last">
+						<label class="control-label col-md-3">Image Upload</label>
+						<div class="col-md-9">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail"
+									style="width: 200px; height: 150px;">
+									<img
+										src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
+										alt="">
+								</div>
+								<div class="fileupload-preview fileupload-exists thumbnail"
+									style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+								<div>
+									<span class="btn btn-default btn-file"> <span
+										class="fileupload-new"><i class="fa fa-paper-clip"></i>
+											Select image</span> <span class="fileupload-exists"><i
+											class="fa fa-undo"></i> Change</span> <input class="default"
+										type="file">
+									</span> <a href="#" class="btn btn-danger fileupload-exists"
+										data-dismiss="fileupload"><i class="fa fa-trash"></i>
+										Remove</a>
+								</div>
+							</div>
+							<br> <span class="label label-danger ">NOTE!</span> <span>
+								Attached image thumbnail is supported in Latest Firefox, Chrome,
+								Opera, Safari and Internet Explorer 10 only </span>
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success">Save changes</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- <div class="modal fade" id="addCollaborateurModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -92,4 +146,4 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> -->
