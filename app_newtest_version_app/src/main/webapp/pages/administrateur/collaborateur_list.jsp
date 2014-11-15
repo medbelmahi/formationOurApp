@@ -104,6 +104,11 @@
 	                <!--breadcrumbs end -->
 	            </div>
         	</div><!-- present working link End-->
+        	
+        	<!-- here -->
+        	
+			<!-- here End -->
+			
 			
 			<!-- Data table des collaborateurs Start -->
 				<s:include value="include/data_table_collaborateurs.jsp"></s:include>
