@@ -148,25 +148,21 @@
 			
 			
 			<!-- Update Collaborateur Modal Form -->
-		
-			<s:include value="include/update_collaborateur_modal.jsp"></s:include>
-		
+				<s:include value="include/update_collaborateur_modal.jsp"></s:include>
 			<!-- End Update Collaborateur Modal Form -->
 			
 			
 			<!-- Ajout Collaborateur Modal Form -->
-			
-			<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
-			
+				<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
 			<!-- End Ajout Collaborateur Modal Form -->
-			
-			
 		
 			<!-- Begin Send Message to collaborateur Modal -->
-			
-			<s:include value="include/send_msg_collaborateur_modal.jsp"></s:include>	
-			
+				<s:include value="include/send_msg_collaborateur_modal.jsp"></s:include>	
 			<!-- End Send Message to collaborateur Modal -->
+			
+			<!-- Begin Gestion des habilitations -->
+				<s:include value="include/gestion_habilitations.jsp"></s:include>	
+			<!-- End Gestion des habilisation -->
 			
         </div>
         <!--body wrapper end-->
@@ -283,6 +279,8 @@
 					if(jsonResponse.sexe == "true"){
 						document.getElementById("optionHomme").checked = true;
 						document.getElementById("optionFemme").checked = false;
+						var element = $(".iradio_square-green");
+						element.addClass("checked");
 					}else{
 						document.getElementById("optionFemme").checked = true;
 						document.getElementById("optionHomme").checked = false;
@@ -294,7 +292,12 @@
 			
 			$('#updateModal').modal('show');
 		};
-		
+		</script>
+	<!-- End Remplir Update Modal -->
+	
+	
+	<!-- Begin envoyer un message à un collaborateur utilisant ajax -->
+	<script type="text/javascript">
 		function jsonGetCollaborateur_forSendEmail(idCollaborateur){
 			//make ajax request to /ajax/getCollaborateur?idCollaborateur=x
 			$.getJSON('<s:url action="getCollaborateur" namespace="/ajax" />', {idCollaborateur : idCollaborateur}, function(jsonResponse) {
@@ -306,32 +309,13 @@
 					var fullName = jsonResponse.nom + " " + jsonResponse.prenom;
 					document.getElementById("fullnameTo").innerHTML = fullName;
 					document.getElementById("to").value = jsonResponse.email;
-// 					document.getElementById("inputTelephone").value = jsonResponse.telephone;
-// 					document.getElementById("inputDateNaissance").value = jsonResponse.dateNaissance;
-// 					document.getElementById("inputAdress").value = jsonResponse.adresse; 
-					
-					
-					
-					//check sexe option
-					/* if(jsonResponse.sexe == "true"){
-						document.getElementById("optionHomme").checked = true;
-						document.getElementById("optionFemme").checked = false;
-					}else{
-						document.getElementById("optionFemme").checked = true;
-						document.getElementById("optionHomme").checked = false;
-						var element = $(".iradio_square-red");
-						element.addClass("checked");
-					} */
+	
 				}
 		  	});
 			
 			$('#sendMessageModal').modal('show');
 		};
-		</script>
-	<!-- End Remplir Update Modal -->
-	
-	
-	<script type="text/javascript">
+		
 		function sendMessageToCollaboroateur_ajax(){
 			var idCollaborateur = document.getElementById("idCollaborateur_sendMessage").value;
 			var object = document.getElementById("subject").value;
@@ -345,12 +329,17 @@
 						
 						$.gritter.add({
 				            // (string | mandatory) the heading of the notification
-				            title: 'Message!',
+				            title: 'Message !',
 				            // (string | mandatory) the text inside the notification
-				            text: 'Votre message été bien envoyé'
+				            text: 'Le message ("'+jsonResponse.object+'") été bien envoyé à '+jsonResponse.collaborateur.fullname+' .'
+				            
 				        });
 						
-						console.log(jsonResponse);
+						
+						//vider les champs :
+							document.getElementById("subject").value = "";
+							document.getElementById("msg_").value = "";
+// 						console.log(jsonResponse);
 					}else
 						{
 							alert("message envoyé");
@@ -360,10 +349,9 @@
 				{
 					alert("remplir tout les champ");
 				}
-			
 		}
 	</script>
-	
+	<!-- End envoyer un message à un collaborateur utilisant ajax -->
 	
 	
 </body>
