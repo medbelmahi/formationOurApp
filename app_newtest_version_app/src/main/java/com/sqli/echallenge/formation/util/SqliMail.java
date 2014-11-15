@@ -38,6 +38,7 @@ public class SqliMail {
 	                MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 	                message.setTo(to);
 	                message.setSubject(((EmailObject)model).getObject());
+	                
 	                Map<String, Object> map = new HashMap<String, Object>();
 	                map.put("model", model);
 	                

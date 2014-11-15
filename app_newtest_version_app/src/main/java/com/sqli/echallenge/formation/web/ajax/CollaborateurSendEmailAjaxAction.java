@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.sqli.echallenge.formation.metier.CollaborateurMetier;
 import com.sqli.echallenge.formation.model.Collaborateur;
 import com.sqli.echallenge.formation.model.EmailObject;
@@ -43,9 +42,8 @@ public class CollaborateurSendEmailAjaxAction extends SqliBasicAction {
 			
 			//Send Email
 			sqliMail.sendMail(collaborateur.getEmailCollaborateur(), "com/sqli/echallenge/formation/web/mail/config-collaborateur-email-template.vm", emailObject);
-//			sqliMail.sendMail(collaborateur.getEmailCollaborateur(), "com/sqli/echallenge/formation/web/mail/config-collaborateur-email-template.vm", collaborateur);
+			//sqliMail.sendMail(collaborateur.getEmailCollaborateur(), "com/sqli/echallenge/formation/web/mail/config-collaborateur-email-template.vm", collaborateur);
 			setSessionActionMessageText(getText("sendEmailToCollaborateurAction.error.send.success"));
-			
 			
 			status =  ActionSupport.SUCCESS;
 			
@@ -58,7 +56,6 @@ public class CollaborateurSendEmailAjaxAction extends SqliBasicAction {
 		return ActionSupport.NONE;
 	}
 
-	@RequiredFieldValidator(shortCircuit=true)
 	public Long getId() {
 		return id;
 	}

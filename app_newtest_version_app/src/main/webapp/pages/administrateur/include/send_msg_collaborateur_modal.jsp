@@ -38,22 +38,7 @@
                                 <div class="form-group">
                                     <label for="to" class="col-md-3">A:</label>
                                     <input type="text" tabindex="1" id="to" class="form-control" readonly="readonly">
-
-                                    <!-- <div class="compose-options">
-                                        <a onclick="$(this).hide(); $('#cc').parent().removeClass('hidden'); $('#cc').focus();" href="javascript:;">Cc</a>
-                                        <a onclick="$(this).hide(); $('#bcc').parent().removeClass('hidden'); $('#bcc').focus();" href="javascript:;">Bcc</a>
-                                    </div> -->
                                 </div>
-
-                              <!--   <div class="form-group hidden">
-                                    <label for="cc" class="">Cc:</label>
-                                    <input type="text" tabindex="2" id="cc" class="form-control">
-                                </div>
-
-                                <div class="form-group hidden">
-                                    <label for="bcc" class="">Bcc:</label>
-                                    <input type="text" tabindex="2" id="bcc" class="form-control">
-                                </div> -->
 
                                 <div class="form-group">
                                     <label for="subject" class="col-md-3">Sujet:</label>
@@ -62,23 +47,11 @@
 
                                 <div class="compose-editor">
                                     <textarea class="wysihtml5 form-control" rows="9" name="msg" id="msg_"></textarea>
-                                    <input type="file" class="default">
                                 </div>
-                                <hr/>
-                                <!-- <div class="compose-btn">
-                                    <button class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Send</button>
-                                    <button class="btn btn-sm btn-default"><i class="fa fa-times"></i> Discard</button>
-                                    <button class="btn btn-sm btn-default">Draft</button>
-                                </div> -->
-
                             </form>
                         </div>
                     </section>
-
-
                 </section>
-                
-                
             </div>
         </div>
     </div>
