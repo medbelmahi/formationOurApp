@@ -38,14 +38,13 @@ public class CollaborateurSendEmailAction extends SqliBasicAction {
 			Collaborateur collaborateur = collaborateurMetier.getCollaborateur(id);
 			
 			//Send Email
-			sqliMail.sendMail(getText("email.test.text"), collaborateur.getEmailCollaborateur(), "Me", "My Content");
+			sqliMail.sendMail(collaborateur.getEmailCollaborateur(), "com/sqli/echallenge/formation/web/mail/config-collaborateur-email-template.vm", collaborateur);
 			setSessionActionMessageText(getText("sendEmailToCollaborateurAction.error.send.success"));
 			return ActionSupport.SUCCESS;
 			
 		}catch(Exception e){
 			//AddErrorMessage
 			setSessionActionErrorText(getText("sendEmailToCollaborateurAction.error.send.fail"));
-			e.printStackTrace();
 			return ActionSupport.ERROR;
 		}
 		

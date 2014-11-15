@@ -9,7 +9,7 @@
 		
 	<!-- MailSender -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
+      <property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="mouad.elfakir@gmail.com" />
 		<property name="password" value="nbaacot123" />
@@ -20,26 +20,22 @@
             	<prop key="mail.smtp.starttls.enable">true</prop>
         	</props>
 		</property>
-	</bean>
-	
-	<bean id="customeMailMessage" class="org.springframework.mail.SimpleMailMessage">
-		<property name="from" value="mouad.fkr@gmail.com" />
-		<property name="subject" value="NoReply" />
-		<property name="text">
-		<value>
-			<![CDATA[
-				Dear %s,
-				Mail Content : %s
-			]]>
-		</value>
-	</property>
-	</bean>
+   </bean>
+ 
+   <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+      <property name="velocityProperties">
+         <value>
+            resource.loader=class
+            class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+         </value>
+      </property>
+   </bean>
 	
 	<bean id="sqlimail" class="com.sqli.echallenge.formation.util.SqliMail">
 		<property name="mailSender" ref="mailSender" />
-		<property name="simpleMailMessage" ref="customeMailMessage" />
+		<property name="velocityEngine" ref="velocityEngine" />
 	</bean>
-	<!-- End Mail -->
+	<!-- End Mail Sender -->
 	
 	
 	<!-- Utilisateur -->	

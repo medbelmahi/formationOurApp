@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<p>Bonjour ${model.fullname}</p>
+		<p>Vous trouvez ci-dessous les détails de votre profil:</p>
+		<p>Email: ${model.emailCollaborateur}</p>
+		<p>Sexe: ${model.sexeString}</p>
+	</body>
+</html>
