@@ -6,9 +6,9 @@
 	<div class="col-sm-12">
 		<section class="panel">
 			<header class="panel-heading">
-				DataTables hidden row details example <span class="tools pull-right">
-					<a href="javascript:;" class="fa fa-chevron-down"></a> <a
-					href="javascript:;" class="fa fa-times"></a>
+				Les collaborateurs <span class="tools pull-right">
+					<a href="javascript:;" class="fa fa-chevron-down" id="downUpCollaborateur"></a> 
+<!-- 					<a href="javascript:;" class="fa fa-times"></a> -->
 				</span>
 			</header>
 			<div class="panel-body">
@@ -51,7 +51,14 @@
 												value="sexeString" /></td>
 										<td class="center hidden-phone ">
 											<ul style="list-style: none;" class="navbar-nav nav-options">
-												<li style="padding-left: 10px;">
+											
+												<li style="padding-left: 15px;">
+													<a title="Habilitations" href='<s:url action="habilitationScores" ><s:param name="id"><s:property value="idCollaborateur"/></s:param></s:url>'>
+														<i class="fa fa-list"></i>
+													</a>
+												</li>
+												
+												<li style="padding-left: 15px;">
 													<a href='javascript:void(0);'
 													   onclick="jsonGetCollaborateur(<s:property value="idCollaborateur"/>);" 
 													   title="Mise à jour">
