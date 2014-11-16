@@ -114,14 +114,16 @@
           selectedLi = selectableLi.clone(),
           value = $option.val(),
           elementId = that.sanitize(value, that.sanitizeRegexp),
-          descriptionOf = $option.attr('data-description');
+          descriptionOf = $option.attr('data-description'),
+          scoreOf = $option.attr('data-score');
       
       //modification
       selectableLi
         .data('ms-value', value)
         .addClass('ms-elem-selectable')
         .attr('id', elementId+'-selectable')
-        .attr('data-description',descriptionOf);
+        .attr('data-description',descriptionOf)
+        .attr('data-score',scoreOf);
 
       selectedLi
         .data('ms-value', value)

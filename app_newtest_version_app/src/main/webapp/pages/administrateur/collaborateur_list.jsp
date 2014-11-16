@@ -398,22 +398,47 @@
 		}
 		
 		function initDownUpPanel(){
-			 var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
-			 if ($('#downUphabilitation').hasClass("fa-chevron-down")) {
-		            $('#downUphabilitation').removeClass("fa-chevron-down").addClass("fa-chevron-up");
-		            el.slideUp(200);
-			 }
-			 el = $('#downUpCollaborateur').parents(".panel").children(".panel-body");
-			 if ($('#downUpCollaborateur').hasClass("fa-chevron-up")) {
-		            $('#downUpCollaborateur').removeClass("fa-chevron-up").addClass("fa-chevron-down");
-		            el.slideDown(200);
-			 }
+			
+			var query_string = window.location.search;
+			query_string = query_string.substring(query_string.indexOf("=")+1,query_string.length);
+			console.log(query_string);
+			
+			if(query_string == ""){
+				var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
+				 if ($('#downUphabilitation').hasClass("fa-chevron-down")) {
+			            $('#downUphabilitation').removeClass("fa-chevron-down").addClass("fa-chevron-up");
+			            el.slideUp(200);
+				 }
+				 el = $('#downUpCollaborateur').parents(".panel").children(".panel-body");
+				 if ($('#downUpCollaborateur').hasClass("fa-chevron-up")) {
+			            $('#downUpCollaborateur').removeClass("fa-chevron-up").addClass("fa-chevron-down");
+			            el.slideDown(200);
+				 }
+			}else{
+				var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
+				 if ($('#downUphabilitation').hasClass("fa-chevron-up")) {
+			            $('#downUphabilitation').removeClass("fa-chevron-up").addClass("fa-chevron-down");
+			            el.slideDown(200);
+				 }
+				 el = $('#downUpCollaborateur').parents(".panel").children(".panel-body");
+				 if ($('#downUpCollaborateur').hasClass("fa-chevron-down")) {
+			            $('#downUpCollaborateur').removeClass("fa-chevron-down").addClass("fa-chevron-up");
+			            el.slideUp(200);
+				 }
+			}
+				
+			 
 		};
 		
 		$('.startRating').rating({callback : function(value, link){
 				console.log(value);
 				document.getElementById('theScore').value = value;
 				}});
+		
+		$('.startRating_2').rating({callback : function(value, link){
+			console.log(value);
+			document.getElementById('theScore_2').value = value;
+			}});
 		
 		initDownUpPanel();
 		/* $('.ms-elem-selectable').off();
@@ -425,7 +450,7 @@
 	
 	<!-- Begin SelectHabilitaion from multi-select -->
 		<script type="text/javascript">
-			$('.ms-elem-selectable').click(function selectedItem() {
+		$('#ms-my_multi_select3_costum div ul .ms-elem-selectable').click(function selectedItem() {
 				$('.ms-elem-selectable').removeClass("selectedItem");
 				$(this).addClass("selectedItem");
 				
@@ -437,6 +462,24 @@
 				document.getElementById('theHabilitationName').innerHTML = $(this).html();
 				document.getElementById('theHabilitationDescription').innerHTML = $(this).attr('data-description');
 			});
+		
+		
+		$('#ms-my_multi_select3_costum_2 div ul .ms-elem-selectable').click(function selectedItem() {
+			$('.ms-elem-selectable').removeClass("selectedItem");
+			$(this).addClass("selectedItem");
+			
+			var str = $(this).attr('id'); 
+			var id = str.substring(0,str.lastIndexOf("-"));
+			
+			document.getElementById('theHabilitationScore_2').value = id;
+			var score = $(this).attr('data-score');
+			document.getElementById('theScore_2').value = score;
+			
+			$('.startRating_2').rating('select',score-1);
+			
+			document.getElementById('theHabilitationName_2').innerHTML = $(this).html();
+			document.getElementById('theHabilitationDescription_2').innerHTML = $(this).attr('data-description');
+		});
 			
 			$(".ms-elem-selectable").mouseleave(function(){
 				$(this).removeClass("ms-hover");
@@ -484,7 +527,7 @@
 			//event.preventDefault();//Prevent default action af the form (submit)
 			
 			//get data form values
-			var updateForm = document.getElementById("update_habilitation_score");
+			/* var updateForm = document.getElementById("update_habilitation_score");
 			
 			var idHabilitationScore = updateForm.idHabilitationScore.value;
 			var score = 1;
@@ -492,27 +535,36 @@
 				if(updateForm.score[i].selected == true){
 					score = updateForm.score[i].value;
 				}
-			}
+			} */
 			
-			//make update request to /ajax/updateHabilitationScore?idHabilitationScore=x&score=y
-			$.getJSON('<s:url action="updateHabilitationScore" namespace="/ajax" />', {idHabilitationScore : idHabilitationScore, score : score}, function(jsonResponse) {
-				if(jsonResponse.status === "success"){
-					//afficher success message
-					
-					//update table
-				}else{
-					//afficher error message
-				}
-		  	});
+			var idHabilitationScore = document.getElementById("theHabilitationScore_2").value;
+			var score = document.getElementById("theScore_2").value;
+			
+			if(idHabilitationScore !="" && score != ""){
+				
+			
+				//make update request to /ajax/updateHabilitationScore?idHabilitationScore=x&score=y
+				$.getJSON('<s:url action="updateHabilitationScore" namespace="/ajax" />', {idHabilitationScore : idHabilitationScore, score : score}, function(jsonResponse) {
+					if(jsonResponse.status === "success"){
+						//afficher success message
+						
+						alert("habilitation modifier")
+						
+						//update table
+					}else{
+						//afficher error message
+					}
+			  	});
+			}
 			
 			return false;//prevent form from submit
 		}
 		
 		function jsonAddHabilitationScore(){
 			//get data form values
-			var updateForm = document.getElementById("add_habilitation_score");
+			/* var addHbilitationForm = document.getElementById("add_habilitation_score");
 			
-			var idCollaborateur = updateForm.idCollaborateur.value;
+			var idCollaborateur = addHbilitationForm.idCollaborateur.value;
 			var idHabilitation = 1;
 			for(var i=0; i<updateForm.idHabilitation.length; i++){
 				if(updateForm.idHabilitation[i].selected == true){
@@ -524,18 +576,31 @@
 				if(updateForm.score[i].selected == true){
 					score = updateForm.score[i].value;
 				}
+			} */
+			
+			var idCollaborateur = document.getElementById("theIdCollaborateur").value;
+			var idHabilitation = document.getElementById("theHabilitation").value;
+			var score = document.getElementById("theScore").value;
+			
+			if(idCollaborateur != "" && idHabilitation !="" && score != ""){
+				
+				if(score == 0) score = 1;
+				
+				//make update request to /ajax/updateHabilitationScore?idHabilitationScore=x&score=y
+				$.getJSON('<s:url action="addHabilitationScore" namespace="/ajax" />', {idCollaborateur : idCollaborateur, idHabilitation : idHabilitation, score : score}, function(jsonResponse) {
+					if(jsonResponse.status === "success"){
+						//afficher success message
+						
+						alert("habilitation ajoutée");
+						
+						//update table
+					}else{
+						//afficher error message
+					}
+			  	});
+				
 			}
 			
-			//make update request to /ajax/updateHabilitationScore?idHabilitationScore=x&score=y
-			$.getJSON('<s:url action="addHabilitationScore" namespace="/ajax" />', {idCollaborateur : idCollaborateur, idHabilitation : idHabilitation, score : score}, function(jsonResponse) {
-				if(jsonResponse.status === "success"){
-					//afficher success message
-					
-					//update table
-				}else{
-					//afficher error message
-				}
-		  	});
 			
 			return false;//prevent form from submit
 		}

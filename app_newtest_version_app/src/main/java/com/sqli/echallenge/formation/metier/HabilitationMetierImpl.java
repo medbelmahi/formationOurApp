@@ -66,13 +66,27 @@ public class HabilitationMetierImpl implements HabilitationMetier {
 		List<Habilitation> collabHabilitationList = getListHabilitationFromHabilitationScore(collabHabilitationScoreList);
 				
 		for(Habilitation h : allHabilitations){
-			if(!collabHabilitationList.contains(h)){
+			if(!existeHabilitationInList(collabHabilitationList,h)){
 				temp.add(h);
 			}
 		}
 		
 		return temp;
 	}
+	
+	/**
+	 * verification si l'habilitation exite dans la liste ou nn 
+	 */
+	private boolean existeHabilitationInList(List<Habilitation> collabHabilitationList, Habilitation habi){
+		for(Habilitation h : collabHabilitationList){
+			if(h.getIdHabilitation().compareTo(habi.getIdHabilitation()) == 0){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	
 	/**
 	 * recevoir une liste des habilitation a partir d'une liste des habilitationScore 
