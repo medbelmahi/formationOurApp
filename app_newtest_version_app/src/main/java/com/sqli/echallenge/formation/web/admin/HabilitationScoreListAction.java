@@ -21,6 +21,7 @@ import com.sqli.echallenge.formation.web.SqliBasicAction;
 /**
  * @author Mouad
  *
+ *
  */
 @Controller
 public class HabilitationScoreListAction extends SqliBasicAction {
