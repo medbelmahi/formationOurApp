@@ -377,7 +377,14 @@
 	<script type="text/javascript">
 		$('#downUpCollaborateur').click(function () {
 			changeUpToDown('#downUpCollaborateur');
-			changeUpToDown('#downUphabilitation');
+			var query_string = window.location.search;
+			query_string = query_string.substring(query_string.indexOf("=")+1,query_string.length);
+			console.log(query_string);
+			
+			if(query_string != ""){
+				changeUpToDown('#downUphabilitation');
+			}
+			
 		});
 		
 		$('#downUphabilitation').click(function () {
@@ -404,6 +411,7 @@
 			console.log(query_string);
 			
 			if(query_string == ""){
+				
 				var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
 				 if ($('#downUphabilitation').hasClass("fa-chevron-down")) {
 			            $('#downUphabilitation').removeClass("fa-chevron-down").addClass("fa-chevron-up");
@@ -413,7 +421,13 @@
 				 if ($('#downUpCollaborateur').hasClass("fa-chevron-up")) {
 			            $('#downUpCollaborateur').removeClass("fa-chevron-up").addClass("fa-chevron-down");
 			            el.slideDown(200);
-				 }
+			            condole.log('thr 2');
+			     }
+				 document.getElementById("gestion_habilitation_panel").innerHTML = 'Gestion des habilitations <p class="text-danger">'
+	                    +'Merci de cliquer sur un collaborateur pour gérer sa liste des habilitations.'
+	                    +'</p> <span class="tools pull-right"> <a style="display: none;" class="fa fa-chevron-down" href="javascript:;" id="downUphabilitation"></a></span>';
+
+				 
 			}else{
 				var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
 				 if ($('#downUphabilitation').hasClass("fa-chevron-up")) {
@@ -425,6 +439,8 @@
 			            $('#downUpCollaborateur').removeClass("fa-chevron-down").addClass("fa-chevron-up");
 			            el.slideUp(200);
 				 }
+				 
+				 document.getElementById("gestion_habilitation_panel").innerHTML = 'Gestion des habilitations <span class="tools pull-right"> <a class="fa fa-chevron-down" href="javascript:;" id="downUphabilitation"></a></span>';
 			}
 				
 			 
@@ -572,7 +588,7 @@
 						setTimeout(function() {
 							// Code a executer
 							location.reload();
-							}, 700);
+							}, 800);
 						
 						//update table
 					}else{
@@ -628,7 +644,7 @@
 						setTimeout(function() {
 							// Code a executer
 							location.reload();
-							}, 700);
+							}, 800);
 						
 						//update table
 					}else{

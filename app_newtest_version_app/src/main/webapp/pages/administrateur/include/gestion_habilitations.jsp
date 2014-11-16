@@ -5,10 +5,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<section class="panel">
-			<header class="panel-heading">
-				Gestion des habilitations <span class="tools pull-right"> <a
-					class="fa fa-chevron-down" href="javascript:;"
-					id="downUphabilitation"></a> <!--                     <a class="fa fa-times" href="javascript:;"></a> -->
+			<header id="gestion_habilitation_panel" class="panel-heading">
+				Gestion des habilitations <span class="tools pull-right">
+				<a style="display: none;" class="fa fa-chevron-down" href="javascript:;" id="downUphabilitation"></a> 
 				</span>
 			</header>
 			<div class="panel-body">
@@ -20,7 +19,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel">
-									<div class="panel-body">
+									<div class="panel-body" style="padding: 0px;">
 										<div class="profile-pic text-center">
 											<img alt="" src='<s:url value="/images/photos/user1.png"/>'>
 											<h2>
