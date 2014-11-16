@@ -131,10 +131,7 @@
 																<hr>
 																<div class="row">
 																	<div class="col-md-12">
-																		<form id="add_habilitation_score"
-																			action="addHabilitationScore" method="post"
-																			onsubmit="return jsonAddHabilitationScore();">
-																			<s:hidden id="theIdCollaborateur_2" name="idCollaborateur" value="%{id}" />
+																		<form id="update_habilitation_score" action="updateHabilitationScore" method="post" onsubmit="return jsonUpdateHabilitationScore();">
 																			<input id="theHabilitationScore_2" type="hidden" name="idHabilitation" value="" required="required">
 																			<input id="theScore_2" type="hidden" name="score" value="1" required="required">
 

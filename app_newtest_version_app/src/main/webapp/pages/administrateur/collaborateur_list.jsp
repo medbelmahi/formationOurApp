@@ -361,7 +361,7 @@
 // 						console.log(jsonResponse);
 					}else
 						{
-							alert("message envoyé");
+							alert("message nn envoyé");
 						}
 			  	});
 			}else
@@ -523,6 +523,15 @@
 		  	});
 		}
 		
+		function sleep(milliseconds) {
+			  var start = new Date().getTime();
+			  for (var i = 0; i < 1e7; i++) {
+			    if ((new Date().getTime() - start) > milliseconds){
+			      break;
+			    }
+			  }
+			}
+		
 		function jsonUpdateHabilitationScore(){
 			//event.preventDefault();//Prevent default action af the form (submit)
 			
@@ -548,7 +557,22 @@
 					if(jsonResponse.status === "success"){
 						//afficher success message
 						
-						alert("habilitation modifier")
+						//alert("habilitation modifier")
+						
+						$.gritter.add({
+				            // (string | mandatory) the heading of the notification
+				            title: 'Mise à jour !',
+				            // (string | mandatory) the text inside the notification
+				            text: 'Le mise à jour a été effectué avec succès.'
+				            
+				        });
+						
+// 						sleep(1000);
+						
+						setTimeout(function() {
+							// Code a executer
+							location.reload();
+							}, 700);
 						
 						//update table
 					}else{
@@ -591,7 +615,20 @@
 					if(jsonResponse.status === "success"){
 						//afficher success message
 						
-						alert("habilitation ajoutée");
+						$.gritter.add({
+				            // (string | mandatory) the heading of the notification
+				            title: 'Ajouter habilitaion !',
+				            // (string | mandatory) the text inside the notification
+				            text: 'L\'ajout d\'hbilitation a été effectué avec succès.'
+				            
+				        });
+						
+// 						sleep(1000);
+						
+						setTimeout(function() {
+							// Code a executer
+							location.reload();
+							}, 700);
 						
 						//update table
 					}else{
