@@ -130,7 +130,7 @@
    }
 
     // panel collapsible
-    $('.panel .tools .fa').click(function () {
+    /*$('.panel .tools .fa').click(function () {
         var el = $(this).parents(".panel").children(".panel-body");
         if ($(this).hasClass("fa-chevron-down")) {
             $(this).removeClass("fa-chevron-down").addClass("fa-chevron-up");
@@ -138,7 +138,7 @@
         } else {
             $(this).removeClass("fa-chevron-up").addClass("fa-chevron-down");
             el.slideDown(200); }
-    });
+    });*/
 
     $('.todo-check label').click(function () {
         $(this).parents('li').children('.todo-title').toggleClass('line-through');

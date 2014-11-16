@@ -114,7 +114,8 @@
           selectedLi = selectableLi.clone(),
           value = $option.val(),
           elementId = that.sanitize(value, that.sanitizeRegexp);
-
+      
+      //modification
       selectableLi
         .data('ms-value', value)
         .addClass('ms-elem-selectable')

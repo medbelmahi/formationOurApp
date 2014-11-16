@@ -66,7 +66,16 @@
 	<!-- initial style -->
 	<link href='<s:url value="/css/style.css"/>' rel="stylesheet">
 	<link href='<s:url value="/css/style-responsive.css"/>' rel="stylesheet">
-
+	
+	<!-- rating -->
+	<link href='<s:url value="/css/jquery.rating.css"/>' rel="stylesheet">
+	
+	<style type="text/css" rel="stylesheet">
+		.ms-selection{
+			display: none;
+		}
+	</style>
+	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="js/html5shiv.js"></script>
@@ -234,6 +243,7 @@
 	<script>
 	    jQuery(document).ready(function(){
 	         $('.wysihtml5').wysihtml5();
+	         
 	    });
 	</script>
 	
@@ -250,6 +260,10 @@
 		<script src='<s:url value="/lib/BootstrapConfirmation_files/application.js"/>'></script>
 		<script src='<s:url value="/lib/BootstrapConfirmation_files/bootstrap-confirmation.js"/>'></script>
 	<!-- end bootstrap confirmation tool -->
+	
+	
+	<!-- Rating -->
+	<script src='<s:url value="/js/jquery.rating.pack.js"/>'></script>
 	
 	
 	<!--gritter script-->
@@ -352,6 +366,60 @@
 		}
 	</script>
 	<!-- End envoyer un message à un collaborateur utilisant ajax -->
+	
+	
+	<!-- Begin DownUp panel -->
+	<script type="text/javascript">
+		$('#downUpCollaborateur').click(function () {
+			changeUpToDown('#downUpCollaborateur');
+			changeUpToDown('#downUphabilitation');
+		});
+		
+		$('#downUphabilitation').click(function () {
+			changeUpToDown('#downUphabilitation');
+			changeUpToDown('#downUpCollaborateur');
+		});
+		
+		function changeUpToDown(theId)
+		{
+			var el_1 = $(theId).parents(".panel").children(".panel-body");
+			if ($(theId).hasClass("fa-chevron-up")) {
+	            $(theId).removeClass("fa-chevron-up").addClass("fa-chevron-down");
+	            el_1.slideDown(200);
+		 	}else{
+		 		$(theId).removeClass("fa-chevron-down").addClass("fa-chevron-up");
+		 		el_1.slideUp(200);
+		 	}
+		}
+		
+		function initDownUpPanel(){
+			 var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
+			 if ($('#downUphabilitation').hasClass("fa-chevron-down")) {
+		            $('#downUphabilitation').removeClass("fa-chevron-down").addClass("fa-chevron-up");
+		            el.slideUp(200);
+			 }
+			 el = $('#downUpCollaborateur').parents(".panel").children(".panel-body");
+			 if ($('#downUpCollaborateur').hasClass("fa-chevron-up")) {
+		            $('#downUpCollaborateur').removeClass("fa-chevron-up").addClass("fa-chevron-down");
+		            el.slideDown(200);
+			 }
+		};
+		
+		$('.startRating').rating({callback : function(value, link){
+				console.log(value);
+				document.getElementById('theScore').value = value;
+				}});
+		
+		initDownUpPanel();
+		/* $('.ms-elem-selectable').off();
+		$('#my_multi_select3_costum').off(); */
+		$('.ms-list').off("click", "**");
+		$('.startRating').rating('select',0);
+	</script>
+	<!-- End DownUp panel -->
+	
+	
+	
 	
 	
 </body>
