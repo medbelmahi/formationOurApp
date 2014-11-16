@@ -8,6 +8,7 @@
     <constant name="struts.custom.i18n.resources" value="global" /> 
     <constant name="struts.action.extension" value="," />
 	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.saveDir" value="/documents" />
 	
 	<package name="sqli_basic_package" extends="struts-default">
 		<interceptors>	
@@ -262,6 +263,47 @@
     		<result name="input" type="redirectAction">formations</result>
     		<result name="error" type="redirectAction">formations</result>
     	</action>
+    </package>
+    
+    <package name="/formateur" namespace="/formateur" extends="sqli_basic_package">
+    	<default-action-ref name="sessionFormations" />
+    	
+    	<action name="sessionFormations" class="com.sqli.echallenge.formation.web.formateur.SessionFormationListAction">
+			<result name="success">/pages/formateur/sessionformation_list.jsp</result>
+    		<result name="input">/pages/formateur/sessionformation_list.jsp</result>
+    		<result name="error">/pages/formateur/sessionformation_list.jsp</result>
+    	</action>
+    	
+    	<action name="sessionDocuments" class="com.sqli.echallenge.formation.web.formateur.SessionDocumentListAction">
+			<result name="success">/pages/formateur/document_list.jsp</result>
+    		<result name="input" type="redirectAction">sessionFormations</result>
+    		<result name="error" type="redirectAction">sessionFormations</result>
+    	</action>
+    	
+    	<action name="deleteDocument" class="com.sqli.echallenge.formation.web.formateur.SessionDocumentDeleteAction">
+			<result name="success" type="redirectAction">sessionFormations</result>
+    		<result name="input" type="redirectAction">sessionFormations</result>
+    		<result name="error" type="redirectAction">sessionFormations</result>
+    	</action>
+    	
+    	<action name="uploadDocument" class="com.sqli.echallenge.formation.web.formateur.SessionDocumentUploadAction">
+    		<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.documen, application/msword, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-powerpoint</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+    	
+			<result name="success" type="redirectAction">sessionFormations</result>
+    		<result name="input" type="redirectAction">sessionFormations</result>
+    		<result name="error" type="redirectAction">sessionFormations</result>
+    	</action>
+    	
+    	<action name="sessionSeances" class="com.sqli.echallenge.formation.web.formateur.SessionSeanceListAction">
+			<result name="success">/pages/formateur/seance_list.jsp</result>
+    		<result name="input" type="redirectAction">sessionFormations</result>
+    		<result name="error" type="redirectAction">sessionFormations</result>
+    	</action>
+    	
     </package>
     
      <package name="ajax" namespace="/ajax" extends="sqli_basic_package, json-default">

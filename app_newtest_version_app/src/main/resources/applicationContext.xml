@@ -104,6 +104,12 @@
 		<property name="dao" ref="session_inscription_dao"></property>
 	</bean>
 	
+	<!-- SessionDocument -->	
+	<bean id="session_document_dao" class="com.sqli.echallenge.formation.dao.SessionDocumentDaoImpl"></bean>	
+	<bean id="session_document_metier" class="com.sqli.echallenge.formation.metier.SessionDocumentMetierImpl">
+		<property name="dao" ref="session_document_dao"></property>
+	</bean>
+	
 	<!-- Hibernate JPA Config -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>

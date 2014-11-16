@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * @author Mouad
@@ -148,5 +149,13 @@ public class SessionFormation {
 
 	public void setFormateur(Utilisateur formateur) {
 		this.formateur = formateur;
+	}
+	
+	@Transient
+	public boolean isActive(){
+		if(dateFinSessionFormation.compareTo(new Date()) > 0){
+			return true;
+		}
+		return false;
 	}
 }
