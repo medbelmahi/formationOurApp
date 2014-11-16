@@ -23,7 +23,7 @@
 									<div class="panel-body">
 										<div class="profile-pic text-center">
 											<img alt="" src='<s:url value="/images/photos/user1.png"/>'>
-											<h2>Mohamed AMIRAL</h2>
+											<h2><s:property value="collaborateur.fullname" /></h2>
 										</div>
 									</div>
 								</div>
@@ -87,8 +87,8 @@
 														<select name="country" class="multi-select" multiple=""
 															id="my_multi_select3_costum">
 															
-															<s:iterator value="collaborateurs">
-																<option value="AF">Afghanistan</option>
+															<s:iterator value="habilitations">
+																<option value='<s:property value="idHabilitation" />' data-description='<s:property value="descriptionHabilitation" />' ><s:property value="nomHabilitation" /></option>
 															</s:iterator>
 														</select>
 													</div>
@@ -99,8 +99,8 @@
 											<div class="col-md-6">
 												<div class="row">
 													<div class="col-md-12">
-														<h3>habilatation name</h3>
-														<p>Description.</p>
+														<h3 id="theHabilitationName">habilatation name</h3>
+														<p id="theHabilitationDescription">Description.</p>
 													</div>
 												</div>
 												<hr>
@@ -108,6 +108,7 @@
 													<div class="col-md-12">
 														<div class="col-md-3">Score : </div>
 														<div class="col-md-9">
+															<input id="theHabilitation" type="hidden" name="theHabilitation" value="" required="required">
 															<input id="theScore" type="hidden" name="score" value="1" required="required">
 															
 															<input name="score_" type="radio" class="star startRating" value="1"/>

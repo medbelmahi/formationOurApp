@@ -124,7 +124,8 @@
     	
     	<!-- Gestion HabilitationScore -->
     	<action name="habilitationScores" class="com.sqli.echallenge.formation.web.admin.HabilitationScoreListAction">
-    		<result name="success">/pages/administrateur/habilitation_score_list.jsp</result>
+<!--     		<result name="success">/pages/administrateur/habilitation_score_list.jsp</result> -->
+    		<result name="success">/pages/administrateur/collaborateur_list.jsp</result>
     		<result name="input" type="redirectAction">collaborateurs</result>
     		<result name="error" type="redirectAction">collaborateurs</result>
     	</action>

@@ -74,6 +74,11 @@
 		.ms-selection{
 			display: none;
 		}
+		
+		.selectedItem{
+			background-color: #65CEA7;
+			
+		}
 	</style>
 	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -418,9 +423,124 @@
 	</script>
 	<!-- End DownUp panel -->
 	
+	<!-- Begin SelectHabilitaion from multi-select -->
+		<script type="text/javascript">
+			$('.ms-elem-selectable').click(function selectedItem() {
+				$('.ms-elem-selectable').removeClass("selectedItem");
+				$(this).addClass("selectedItem");
+				
+				var str = $(this).attr('id'); 
+				var id = str.substring(0,str.lastIndexOf("-"));
+				
+				document.getElementById('theHabilitation').value = id;
+				
+				document.getElementById('theHabilitationName').innerHTML = $(this).html();
+				document.getElementById('theHabilitationDescription').innerHTML = $(this).attr('data-description');
+			});
+			
+			$(".ms-elem-selectable").mouseleave(function(){
+				$(this).removeClass("ms-hover");
+			});
+		</script>
+	<!-- End SelectHabilitaion from multi-select -->
 	
 	
+	<!-- Begin Add and Update habilitation by Ajax -->
 	
+	<script type="text/javascript">
+		function jsonDeleteHabilitationScore(idHabilitationScore){
+			$.getJSON('<s:url action="deleteHabilitationScore" namespace="/ajax" />', {idHabilitationScore : idHabilitationScore}, function(jsonResponse) {
+		
+				if(jsonResponse.status === "success"){
+					//afficher message success	
+					
+					//update table supprimer field
+				}else {
+					//afficher message fail
+				}
+		  	});
+		}	
+		
+		function jsonGetHabilitationScore(idHabilitationScore){
+			$.getJSON('<s:url action="getHabilitationScore" namespace="/ajax" />', {idHabilitationScore : idHabilitationScore}, function(jsonResponse) {
+		
+				if(jsonResponse.status === "success"){
+					var updateForm = document.getElementById("update_habilitation_score");
+					updateForm.idHabilitationScore.value = jsonResponse.idHabilitationScore;
+					
+					//select sexe option
+					for(var i=0; i<updateForm.score.length; i++){
+						if(jsonResponse.score == updateForm.score[i].value){
+							updateForm.score[i].selected=true;
+						}else{
+							updateForm.score[i].selected=false;
+						}
+					}
+				}
+		  	});
+		}
+		
+		function jsonUpdateHabilitationScore(){
+			//event.preventDefault();//Prevent default action af the form (submit)
+			
+			//get data form values
+			var updateForm = document.getElementById("update_habilitation_score");
+			
+			var idHabilitationScore = updateForm.idHabilitationScore.value;
+			var score = 1;
+			for(var i=0; i<updateForm.score.length; i++){
+				if(updateForm.score[i].selected == true){
+					score = updateForm.score[i].value;
+				}
+			}
+			
+			//make update request to /ajax/updateHabilitationScore?idHabilitationScore=x&score=y
+			$.getJSON('<s:url action="updateHabilitationScore" namespace="/ajax" />', {idHabilitationScore : idHabilitationScore, score : score}, function(jsonResponse) {
+				if(jsonResponse.status === "success"){
+					//afficher success message
+					
+					//update table
+				}else{
+					//afficher error message
+				}
+		  	});
+			
+			return false;//prevent form from submit
+		}
+		
+		function jsonAddHabilitationScore(){
+			//get data form values
+			var updateForm = document.getElementById("add_habilitation_score");
+			
+			var idCollaborateur = updateForm.idCollaborateur.value;
+			var idHabilitation = 1;
+			for(var i=0; i<updateForm.idHabilitation.length; i++){
+				if(updateForm.idHabilitation[i].selected == true){
+					idHabilitation = updateForm.idHabilitation[i].value;
+				}
+			}
+			var score = 1;
+			for(var i=0; i<updateForm.score.length; i++){
+				if(updateForm.score[i].selected == true){
+					score = updateForm.score[i].value;
+				}
+			}
+			
+			//make update request to /ajax/updateHabilitationScore?idHabilitationScore=x&score=y
+			$.getJSON('<s:url action="addHabilitationScore" namespace="/ajax" />', {idCollaborateur : idCollaborateur, idHabilitation : idHabilitation, score : score}, function(jsonResponse) {
+				if(jsonResponse.status === "success"){
+					//afficher success message
+					
+					//update table
+				}else{
+					//afficher error message
+				}
+		  	});
+			
+			return false;//prevent form from submit
+		}
+	</script>
 	
+	<!-- End Add and Update habilitation by Ajax -->
 </body>
 </html>

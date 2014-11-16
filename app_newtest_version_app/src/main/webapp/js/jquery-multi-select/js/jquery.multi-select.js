@@ -113,13 +113,15 @@
       var selectableLi = $('<li '+attributes+'><span>'+$option.text()+'</span></li>'),
           selectedLi = selectableLi.clone(),
           value = $option.val(),
-          elementId = that.sanitize(value, that.sanitizeRegexp);
+          elementId = that.sanitize(value, that.sanitizeRegexp),
+          descriptionOf = $option.attr('data-description');
       
       //modification
       selectableLi
         .data('ms-value', value)
         .addClass('ms-elem-selectable')
-        .attr('id', elementId+'-selectable');
+        .attr('id', elementId+'-selectable')
+        .attr('data-description',descriptionOf);
 
       selectedLi
         .data('ms-value', value)

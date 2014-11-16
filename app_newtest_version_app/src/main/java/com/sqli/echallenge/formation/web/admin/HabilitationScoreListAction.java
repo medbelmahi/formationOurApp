@@ -44,7 +44,7 @@ public class HabilitationScoreListAction extends SqliBasicAction {
 	public String execute() throws Exception {
 		try {
 			habilitationScores = habilitationScoreMetier.getAllHabilitationScores(id);
-			setHabilitations(habilitationMetier.getAllHabilitations());
+			setHabilitations(habilitationMetier.getAllHabilitations_notInCollabList(habilitationScores));
 			
 			collaborateur = collaborateurMetier.getCollaborateur(id);
 			collaborateurs = collaborateurMetier.getAllCollaborateurs();
