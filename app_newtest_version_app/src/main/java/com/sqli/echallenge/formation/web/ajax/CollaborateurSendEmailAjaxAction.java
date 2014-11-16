@@ -31,12 +31,13 @@ public class CollaborateurSendEmailAjaxAction extends SqliBasicAction {
 	private String object;
 	private String msg;
 	private String status;
+	private Collaborateur collaborateur;
 	
 	@Override
 	public String execute() throws Exception {
 		
 		try{
-			Collaborateur collaborateur = collaborateurMetier.getCollaborateur(id);
+			collaborateur = collaborateurMetier.getCollaborateur(id);
 			
 			EmailObject emailObject = new EmailObject(object,msg,collaborateur);
 			
@@ -86,6 +87,14 @@ public class CollaborateurSendEmailAjaxAction extends SqliBasicAction {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Collaborateur getCollaborateur() {
+		return collaborateur;
+	}
+
+	public void setCollaborateur(Collaborateur collaborateur) {
+		this.collaborateur = collaborateur;
 	}
 	
 	

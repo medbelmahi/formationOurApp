@@ -66,7 +66,16 @@
 	<!-- initial style -->
 	<link href='<s:url value="/css/style.css"/>' rel="stylesheet">
 	<link href='<s:url value="/css/style-responsive.css"/>' rel="stylesheet">
-
+	
+	<!-- rating -->
+	<link href='<s:url value="/css/jquery.rating.css"/>' rel="stylesheet">
+	
+	<style type="text/css" rel="stylesheet">
+		.ms-selection{
+			display: none;
+		}
+	</style>
+	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="js/html5shiv.js"></script>
@@ -148,25 +157,21 @@
 			
 			
 			<!-- Update Collaborateur Modal Form -->
-		
-			<s:include value="include/update_collaborateur_modal.jsp"></s:include>
-		
+				<s:include value="include/update_collaborateur_modal.jsp"></s:include>
 			<!-- End Update Collaborateur Modal Form -->
 			
 			
 			<!-- Ajout Collaborateur Modal Form -->
-			
-			<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
-			
+				<s:include value="include/ajout_collaborateur_modal.jsp"></s:include>
 			<!-- End Ajout Collaborateur Modal Form -->
-			
-			
 		
 			<!-- Begin Send Message to collaborateur Modal -->
-			
-			<s:include value="include/send_msg_collaborateur_modal.jsp"></s:include>	
-			
+				<s:include value="include/send_msg_collaborateur_modal.jsp"></s:include>	
 			<!-- End Send Message to collaborateur Modal -->
+			
+			<!-- Begin Gestion des habilitations -->
+				<s:include value="include/gestion_habilitations.jsp"></s:include>	
+			<!-- End Gestion des habilisation -->
 			
         </div>
         <!--body wrapper end-->
@@ -238,6 +243,7 @@
 	<script>
 	    jQuery(document).ready(function(){
 	         $('.wysihtml5').wysihtml5();
+	         
 	    });
 	</script>
 	
@@ -254,6 +260,10 @@
 		<script src='<s:url value="/lib/BootstrapConfirmation_files/application.js"/>'></script>
 		<script src='<s:url value="/lib/BootstrapConfirmation_files/bootstrap-confirmation.js"/>'></script>
 	<!-- end bootstrap confirmation tool -->
+	
+	
+	<!-- Rating -->
+	<script src='<s:url value="/js/jquery.rating.pack.js"/>'></script>
 	
 	
 	<!--gritter script-->
@@ -283,6 +293,8 @@
 					if(jsonResponse.sexe == "true"){
 						document.getElementById("optionHomme").checked = true;
 						document.getElementById("optionFemme").checked = false;
+						var element = $(".iradio_square-green");
+						element.addClass("checked");
 					}else{
 						document.getElementById("optionFemme").checked = true;
 						document.getElementById("optionHomme").checked = false;
@@ -294,7 +306,12 @@
 			
 			$('#updateModal').modal('show');
 		};
-		
+		</script>
+	<!-- End Remplir Update Modal -->
+	
+	
+	<!-- Begin envoyer un message à un collaborateur utilisant ajax -->
+	<script type="text/javascript">
 		function jsonGetCollaborateur_forSendEmail(idCollaborateur){
 			//make ajax request to /ajax/getCollaborateur?idCollaborateur=x
 			$.getJSON('<s:url action="getCollaborateur" namespace="/ajax" />', {idCollaborateur : idCollaborateur}, function(jsonResponse) {
@@ -306,32 +323,13 @@
 					var fullName = jsonResponse.nom + " " + jsonResponse.prenom;
 					document.getElementById("fullnameTo").innerHTML = fullName;
 					document.getElementById("to").value = jsonResponse.email;
-// 					document.getElementById("inputTelephone").value = jsonResponse.telephone;
-// 					document.getElementById("inputDateNaissance").value = jsonResponse.dateNaissance;
-// 					document.getElementById("inputAdress").value = jsonResponse.adresse; 
-					
-					
-					
-					//check sexe option
-					/* if(jsonResponse.sexe == "true"){
-						document.getElementById("optionHomme").checked = true;
-						document.getElementById("optionFemme").checked = false;
-					}else{
-						document.getElementById("optionFemme").checked = true;
-						document.getElementById("optionHomme").checked = false;
-						var element = $(".iradio_square-red");
-						element.addClass("checked");
-					} */
+	
 				}
 		  	});
 			
 			$('#sendMessageModal').modal('show');
 		};
-		</script>
-	<!-- End Remplir Update Modal -->
-	
-	
-	<script type="text/javascript">
+		
 		function sendMessageToCollaboroateur_ajax(){
 			var idCollaborateur = document.getElementById("idCollaborateur_sendMessage").value;
 			var object = document.getElementById("subject").value;
@@ -345,12 +343,17 @@
 						
 						$.gritter.add({
 				            // (string | mandatory) the heading of the notification
-				            title: 'Message!',
+				            title: 'Message !',
 				            // (string | mandatory) the text inside the notification
-				            text: 'Votre message été bien envoyé'
+				            text: 'Le message ("'+jsonResponse.object+'") été bien envoyé à '+jsonResponse.collaborateur.fullname+' .'
+				            
 				        });
 						
-						console.log(jsonResponse);
+						
+						//vider les champs :
+							document.getElementById("subject").value = "";
+							document.getElementById("msg_").value = "";
+// 						console.log(jsonResponse);
 					}else
 						{
 							alert("message envoyé");
@@ -360,9 +363,62 @@
 				{
 					alert("remplir tout les champ");
 				}
-			
 		}
 	</script>
+	<!-- End envoyer un message à un collaborateur utilisant ajax -->
+	
+	
+	<!-- Begin DownUp panel -->
+	<script type="text/javascript">
+		$('#downUpCollaborateur').click(function () {
+			changeUpToDown('#downUpCollaborateur');
+			changeUpToDown('#downUphabilitation');
+		});
+		
+		$('#downUphabilitation').click(function () {
+			changeUpToDown('#downUphabilitation');
+			changeUpToDown('#downUpCollaborateur');
+		});
+		
+		function changeUpToDown(theId)
+		{
+			var el_1 = $(theId).parents(".panel").children(".panel-body");
+			if ($(theId).hasClass("fa-chevron-up")) {
+	            $(theId).removeClass("fa-chevron-up").addClass("fa-chevron-down");
+	            el_1.slideDown(200);
+		 	}else{
+		 		$(theId).removeClass("fa-chevron-down").addClass("fa-chevron-up");
+		 		el_1.slideUp(200);
+		 	}
+		}
+		
+		function initDownUpPanel(){
+			 var el = $('#downUphabilitation').parents(".panel").children(".panel-body");
+			 if ($('#downUphabilitation').hasClass("fa-chevron-down")) {
+		            $('#downUphabilitation').removeClass("fa-chevron-down").addClass("fa-chevron-up");
+		            el.slideUp(200);
+			 }
+			 el = $('#downUpCollaborateur').parents(".panel").children(".panel-body");
+			 if ($('#downUpCollaborateur').hasClass("fa-chevron-up")) {
+		            $('#downUpCollaborateur').removeClass("fa-chevron-up").addClass("fa-chevron-down");
+		            el.slideDown(200);
+			 }
+		};
+		
+		$('.startRating').rating({callback : function(value, link){
+				console.log(value);
+				document.getElementById('theScore').value = value;
+				}});
+		
+		initDownUpPanel();
+		/* $('.ms-elem-selectable').off();
+		$('#my_multi_select3_costum').off(); */
+		$('.ms-list').off("click", "**");
+		$('.startRating').rating('select',0);
+	</script>
+	<!-- End DownUp panel -->
+	
+	
 	
 	
 	

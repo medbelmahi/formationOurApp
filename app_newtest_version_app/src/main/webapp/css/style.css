@@ -1856,15 +1856,32 @@ ul.user-states li {
     cursor: pointer;
 }
 
-.rating span.star:before, .rating span.star:before {
+ .rating span.star:before, .rating span.star:before {
     content: "\f006";
     padding-right: 5px;
     color: #BEC3C7;
 }
 
 .rating span.star:hover:before, .rating span.star:hover:before, .rating span.star:hover ~ span.star:before, .rating span.star:hover ~ span.star:before {
-    content: "\f005";
-    color: #65CEA7;
+	content: "\f005";
+	color: #65CEA7; 
+}
+
+.theSpanStar ~ span.star:before {
+	content: "\f005";
+	color: #65CEA7; 
+} 
+
+.theSpanStar::before {
+	
+	content: "\f005";
+	color: #65CEA7; 
+}
+
+.theSpanStar_ {
+	content: "\f006";
+    padding-right: 5px;
+    color: #BEC3C7;
 }
 
 /*----------------------------
