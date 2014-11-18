@@ -5,6 +5,7 @@ package com.sqli.echallenge.formation.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,6 +35,10 @@ public class Seance {
 	@Column(name="DESCRIPTION_SEANCE")
 	private String descriptionSeance;
 	
+	@Column(name="DATE_SEANCE")
+	@Temporal(TemporalType.DATE)
+	private Date dateSeance;
+	
 	@Column(name="HEURE_DEBUT_SEANCE")
 	@Temporal(TemporalType.TIME)
 	private Date heureDebutSeance;
@@ -42,7 +47,7 @@ public class Seance {
 	@Temporal(TemporalType.TIME)
 	private Date heureFinSeance;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="ID_SESSION_FORMATION")
 	private SessionFormation sessionFormation;
 	
@@ -71,6 +76,14 @@ public class Seance {
 
 	public void setDescriptionSeance(String descriptionSeance) {
 		this.descriptionSeance = descriptionSeance;
+	}
+
+	public Date getDateSeance() {
+		return dateSeance;
+	}
+
+	public void setDateSeance(Date dateSeance) {
+		this.dateSeance = dateSeance;
 	}
 
 	public Date getHeureDebutSeance() {

@@ -16,6 +16,7 @@ import com.sqli.echallenge.formation.metier.FormationMetier;
 import com.sqli.echallenge.formation.metier.SessionFormationMetier;
 import com.sqli.echallenge.formation.metier.UtilisateurMetier;
 import com.sqli.echallenge.formation.model.Formation;
+import com.sqli.echallenge.formation.model.Seance;
 import com.sqli.echallenge.formation.model.SessionFormation;
 import com.sqli.echallenge.formation.model.Utilisateur;
 import com.sqli.echallenge.formation.web.SqliBasicAction;
@@ -46,14 +47,10 @@ public class SessionFormationAddAction extends SqliBasicAction {
 	private Date dateDebutSessionFormation;
 	private Date dateFinSessionFormation;
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public String execute() throws Exception {
 		try {
-			//if dateDebut grather than dateFin throw Exception
-			if(dateDebutSessionFormation.compareTo(dateFinSessionFormation) > 0){
-				throw new Exception();
-			}
-			
 			//else
 			SessionFormation sf = new SessionFormation();
 			
@@ -71,6 +68,17 @@ public class SessionFormationAddAction extends SqliBasicAction {
 			sf.setDateDebutSessionFormation(dateDebutSessionFormation);
 			sf.setDateFinSessionFormation(dateFinSessionFormation);
 			
+			//addSeances to sessionFormation
+			for(Date date = new Date(dateDebutSessionFormation.getTime()); date.compareTo(dateFinSessionFormation)<0; date.setDate(date.getDate()+1)){
+				//Seance empty
+				Seance seance = new Seance();
+				seance.setDateSeance(date);
+				
+				//add seance to sessionFormation
+				sf.getSceances().add(seance);
+				seance.setSessionFormation(sf);
+			}
+			
 			sessionFormationMetier.addSessionFormation(sf);
 			
 			setSessionActionMessageText(getText("addSessionFormation.message.add.success"));
@@ -79,6 +87,17 @@ public class SessionFormationAddAction extends SqliBasicAction {
 			
 			setSessionActionErrorText(getText("addSessionFormation.error.add.fail"));
 			return ActionSupport.ERROR;
+		}
+	}
+	
+	@Override
+	public void validate() {
+		//if dateDebut grather than dateFin throw Exception
+		if(dateDebutSessionFormation != null && dateFinSessionFormation != null){
+			if(dateDebutSessionFormation.compareTo(dateFinSessionFormation) > 0){
+				addActionError("");
+				setSessionActionErrorText(getText("addSessionFormation.error.date.fail"));
+			}
 		}
 	}
 	
