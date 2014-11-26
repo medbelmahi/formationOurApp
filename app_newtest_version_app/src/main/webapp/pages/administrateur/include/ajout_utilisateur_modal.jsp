@@ -6,12 +6,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-				<h4 class="modal-title">Ajouter Nouveau Collaborateur</h4>
+				<h4 class="modal-title">Ajouter Nouveau Utilisateur</h4>
 			</div>
 
 			<div class="modal-body">
 				<div class="panel-body">
-					<form data-toggle="validator" id="add_collaborateur" action="addCollaborateur" method="post" role="form" class="form-horizontal adminex-form">
+					<form data-toggle="validator" id="add_collaborateur" action="addUtilisateur" method="post" role="form" class="form-horizontal adminex-form">
 						<div class="form-group">
 							<label class="control-label col-sm-4">Image de profil</label>
 							<div class="col-sm-8">
@@ -68,7 +68,7 @@
 						<div class="form-group">
 							<label for="inputTelephone_2" class="col-sm-2 col-sm-2 control-label">Telephone</label> 
 							<div class="col-sm-10">
-								<input autocomplete="off" name="telephone" class="form-control" id="inputTelephone_2" placeholder="Ex : 0610807402" type="text" pattern="^0[5-6]{1}\d{8}">
+								<input autocomplete="off" name="telephone" class="form-control" id="inputTelephone_2" placeholder="Ex : 0610807402" type="text" pattern="^0[5-6]{1}\d{8}" required="required">
 							</div>
 						</div>
 
@@ -76,10 +76,20 @@
 						<div class="form-group">
 							<label for="inputAdress_2" class="col-sm-2 col-sm-2 control-label">Adresse</label> 
 							<div class="col-sm-10">
-								<input autocomplete="off" name="adresse" class="form-control" id="inputAdress_2" placeholder="Ex : Casablanca Rue 10 N80" type="text">
+								<input autocomplete="off" name="adresse" class="form-control" id="inputAdress_2" placeholder="Ex : Casablanca Rue 10 N80" type="text" required="required">
 							</div>
 						</div>
-
+						
+						<div class="form-group">
+							<label for="inputAdress_2" class="col-sm-2 col-sm-2 control-label">Profil</label> 
+							<div class="col-sm-10">
+								<select name="profil" class="form-control input-sm m-bot15">
+	                                <s:iterator value="profils">
+										<option value='<s:property value="idProfil" />'><s:property value="nomProfil" /></option>
+									</s:iterator>
+                            	</select>
+							</div>
+						</div>
 
 						<div class="form-group">
 							<div style="display: flex; align-items: center;" class="col-sm-2 col-sm-2">

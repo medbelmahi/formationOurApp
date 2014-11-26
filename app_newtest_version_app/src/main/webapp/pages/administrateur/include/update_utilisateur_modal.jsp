@@ -6,12 +6,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-				<h4 class="modal-title">Mise à jour du Collaborateur</h4>
+				<h4 class="modal-title">Mise à jour d'utilisateur</h4>
 			</div>
 
 			<div class="modal-body">
 				<div class="panel-body">
-					<form data-toggle="validator" id="add_collaborateur" action="updateCollaborateur" method="post" role="form" class="form-horizontal adminex-form">
+					<form data-toggle="validator" id="update_utilisateur" action="updateUtilisateur" method="post" role="form" class="form-horizontal adminex-form">
 						<div class="form-group">
 							<label class="control-label col-sm-4">Image de profil</label>
 							<div class="col-sm-8">
@@ -85,7 +85,18 @@
 								<input autocomplete="off" name="adresse" class="form-control" id="inputAdress" placeholder="Ex : Casablanca Rue 10 N80" type="text">
 							</div>
 						</div>
-
+						
+						
+						<div class="form-group">
+							<label for="inputAdress_2" class="col-sm-2 col-sm-2 control-label">Profil</label> 
+							<div class="col-sm-10">
+								<select id="profilSelected" name="profil" class="form-control input-sm m-bot15">
+	                                <s:iterator value="profils">
+										<option value='<s:property value="idProfil" />'><s:property value="nomProfil" /></option>
+									</s:iterator>
+                            	</select>
+							</div>
+						</div>
 
 						<div class="form-group">
 							<div style="display: flex; align-items: center;" class="col-sm-2 col-sm-2 control-label"> 

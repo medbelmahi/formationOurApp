@@ -298,13 +298,17 @@
 					if(jsonResponse.sexe == "true"){
 						document.getElementById("optionHomme").checked = true;
 						document.getElementById("optionFemme").checked = false;
-						var element = $(".iradio_square-green");
-						element.addClass("checked");
+						var elementGreen = $(".iradio_square-green");
+						var elementRed = $(".iradio_square-red");
+						elementGreen.addClass("checked");
+						elementRed.removeClass("checked");
 					}else{
 						document.getElementById("optionFemme").checked = true;
 						document.getElementById("optionHomme").checked = false;
-						var element = $(".iradio_square-red");
-						element.addClass("checked");
+						var elementRed = $(".iradio_square-red");
+						var elementGreen = $(".iradio_square-green");
+						elementRed.addClass("checked");
+						elementGreen.removeClass("checked");
 					}
 				}
 		  	});
