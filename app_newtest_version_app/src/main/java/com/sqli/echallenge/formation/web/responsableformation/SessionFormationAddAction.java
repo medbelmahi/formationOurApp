@@ -68,7 +68,7 @@ public class SessionFormationAddAction extends SqliBasicAction {
 			sf.setDateDebutSessionFormation(dateDebutSessionFormation);
 			sf.setDateFinSessionFormation(dateFinSessionFormation);
 			
-			//addSeances to sessionFormation
+			//addSeances to sessionFormation (seance per date)
 			for(Date date = new Date(dateDebutSessionFormation.getTime()); date.compareTo(dateFinSessionFormation)<0; date.setDate(date.getDate()+1)){
 				//Seance empty
 				Seance seance = new Seance();
