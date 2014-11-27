@@ -3,14 +3,13 @@
  */
 package com.sqli.echallenge.formation.web.ajax;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sqli.echallenge.formation.metier.UtilisateurMetier;
 import com.sqli.echallenge.formation.model.Utilisateur;
+import com.sqli.echallenge.formation.util.SqliDate;
 import com.sqli.echallenge.formation.web.SqliBasicAction;
 
 /**
@@ -30,7 +29,7 @@ public class GetUtilisateurAjaxAction extends SqliBasicAction {
 	private String nom;
 	private String prenom;
 	private String email;
-	private Date dateNaissance;
+	private String dateNaissance;
 	private String telephone;
 	private String adresse;
 	private boolean sexe;
@@ -43,7 +42,7 @@ public class GetUtilisateurAjaxAction extends SqliBasicAction {
 			nom = utilisateur.getNomUtilsateur();
 			prenom = utilisateur.getPrenomUtilisateur();
 			email = utilisateur.getEmailUtilisateur();
-			dateNaissance = utilisateur.getDateNaissanceUtilisateur();
+			dateNaissance = SqliDate.getDateString(utilisateur.getDateNaissanceUtilisateur());
 			telephone = utilisateur.getTelephoneUtilisateur();
 			adresse = utilisateur.getAdresseUtilisateur();
 			sexe = utilisateur.isSexeUtilisateur();
@@ -99,11 +98,11 @@ public class GetUtilisateurAjaxAction extends SqliBasicAction {
 		this.telephone = telephone;
 	}
 
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

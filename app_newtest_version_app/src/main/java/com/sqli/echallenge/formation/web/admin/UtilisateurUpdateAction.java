@@ -32,10 +32,10 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 
 	@Autowired
 	public UtilisateurMetier utilisateurMetier;
-	
+
 	@Autowired
 	public ProfilMetier profilMetier;
-	
+
 	private Long idUtilisateur;
 	private String nom;
 	private String prenom;
@@ -44,15 +44,14 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	private String telephone;
 	private String adresse;
 	private Boolean sexe;
-	
-	private Long profil;//idProfil
-		
+
+	private Long profil;// idProfil
+
 	@Override
 	public String execute() throws Exception {
-		
-		//After fields validation
+		// After fields validation
 		try {
-			
+
 			Utilisateur u = utilisateurMetier.getUtilisateur(idUtilisateur);
 			u.setNomUtilsateur(nom);
 			u.setPrenomUtilisateur(prenom);
@@ -61,27 +60,27 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 			u.setTelephoneUtilisateur(telephone);
 			u.setAdresseUtilisateur(adresse);
 			u.setSexeUtilisateur(sexe);
-			
+
 			Profil p = profilMetier.getProfil(profil);
 			u.setProfil(p);
-			
-			//Update Collaborateur
+
+			// Update Collaborateur
 			setSessionActionMessageText(getText("updateUtilisateur.message.update.success"));
 			utilisateurMetier.updateUtilisateur(u);
-			
-			//Send Email with modifications
-			//....
+
+			// Send Email with modifications
+			// ....
 			return ActionSupport.SUCCESS;
-			
+
 		} catch (Exception e) {
-			//Update Fail
+			// Update Fail
 			setSessionActionErrorText("updateUtilisateur.error.email.deplicated");
 			return ActionSupport.ERROR;
 		}
 	}
 
-	@RequiredFieldValidator(shortCircuit=true)
-	@ConversionErrorFieldValidator(shortCircuit=true)
+	@RequiredFieldValidator(shortCircuit = true)
+	@ConversionErrorFieldValidator(shortCircuit = true)
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
 	}
@@ -89,9 +88,9 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	public void setIdUtilisateur(Long idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
-	
-	@RequiredFieldValidator(shortCircuit=true)
-	@RequiredStringValidator(message="nom", shortCircuit=true)
+
+	@RequiredFieldValidator(shortCircuit = true)
+	@RequiredStringValidator(message = "nom", shortCircuit = true)
 	public String getNom() {
 		return nom;
 	}
@@ -99,9 +98,9 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	public void setNom(String nom) {
 		this.nom = nom.toUpperCase();
 	}
-	
-	@RequiredFieldValidator(shortCircuit=true)
-	@RequiredStringValidator(message="prenom", shortCircuit=true)
+
+	@RequiredFieldValidator(shortCircuit = true)
+	@RequiredStringValidator(message = "prenom", shortCircuit = true)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -109,10 +108,10 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom.toLowerCase();
 	}
-	
-	@RequiredFieldValidator(shortCircuit=true)
-	@RequiredStringValidator(message="email", shortCircuit=true)
-	@EmailValidator(message="emailValide", shortCircuit=true)
+
+	@RequiredFieldValidator(shortCircuit = true)
+	@RequiredStringValidator(message = "email", shortCircuit = true)
+	@EmailValidator(message = "emailValide", shortCircuit = true)
 	public String getEmail() {
 		return email;
 	}
@@ -120,8 +119,9 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	public void setEmail(String email) {
 		this.email = email.toLowerCase();
 	}
-	@RequiredFieldValidator(shortCircuit=true)
-	@DateRangeFieldValidator(message="dateFormat", dateFormat = "dd/MM/yyyy", shortCircuit=true)
+
+	@RequiredFieldValidator(shortCircuit = true)
+	@DateRangeFieldValidator(message = "dateFormat", dateFormat = "dd/MM/yyyy", shortCircuit = true)
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
@@ -130,9 +130,9 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 		this.dateNaissance = dateNaissance;
 	}
 
-	@RequiredFieldValidator(shortCircuit=true)
-	@RequiredStringValidator(message="telephon", shortCircuit=true)
-	@RegexFieldValidator(type = ValidatorType.SIMPLE, regex = "^0?[5-6]{1}\\d{8}",message = "Please enter a valid phone number")
+	@RequiredFieldValidator(shortCircuit = true)
+	@RequiredStringValidator(message = "telephon", shortCircuit = true)
+	@RegexFieldValidator(type = ValidatorType.SIMPLE, regex = "^0?[5-6]{1}\\d{8}", message = "Please enter a valid phone number")
 	public String getTelephone() {
 		return telephone;
 	}
@@ -141,8 +141,8 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 		this.telephone = telephone;
 	}
 
-	@RequiredFieldValidator(shortCircuit=true)
-	@RequiredStringValidator(message="addrese", shortCircuit=true)
+	@RequiredFieldValidator(shortCircuit = true)
+	@RequiredStringValidator(message = "addrese", shortCircuit = true)
 	public String getAdresse() {
 		return adresse;
 	}
@@ -151,7 +151,7 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 		this.adresse = adresse;
 	}
 
-	@RequiredFieldValidator(shortCircuit=true)
+	@RequiredFieldValidator(shortCircuit = true)
 	public Boolean getSexe() {
 		return sexe;
 	}
@@ -160,7 +160,7 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 		this.sexe = sexe;
 	}
 
-	@RequiredFieldValidator(shortCircuit=true)
+	@RequiredFieldValidator(shortCircuit = true)
 	public Long getProfil() {
 		return profil;
 	}
