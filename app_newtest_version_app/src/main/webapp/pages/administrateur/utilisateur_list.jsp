@@ -284,7 +284,7 @@
 					var updateForm = document.getElementById("update_utilisateur");
 					
 					//set inputs value from jsonResponse
-					document.getElementById("idCollaborateur").value = jsonResponse.idCollaborateur;
+					document.getElementById("idUtilisateur").value = jsonResponse.idCollaborateur;
 					document.getElementById("inputLastName").value = jsonResponse.nom;
 					document.getElementById("inputFirstName").value = jsonResponse.prenom;
 					document.getElementById("inputEmail").value = jsonResponse.email;

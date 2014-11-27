@@ -33,7 +33,7 @@
 							</div>
 						</div>
 						
-						<input type="hidden" id="idCollaborateur" name="idCollaborateur">
+						<input type="hidden" id="idUtilisateur" name="idUtilisateur">
 						
 						<div class="form-group">
 							<label for="inputLastName" class="col-sm-2 col-sm-2 control-label">Nom</label> 

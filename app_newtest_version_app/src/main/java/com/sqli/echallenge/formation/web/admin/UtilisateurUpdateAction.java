@@ -46,11 +46,10 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	private Boolean sexe;
 	
 	private Long profil;//idProfil
-	
-	private Boolean sendEmail;
-	
+		
 	@Override
 	public String execute() throws Exception {
+		
 		//After fields validation
 		try {
 			
@@ -98,7 +97,7 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom.toLowerCase();
+		this.nom = nom.toUpperCase();
 	}
 	
 	@RequiredFieldValidator(shortCircuit=true)
@@ -159,14 +158,6 @@ public class UtilisateurUpdateAction extends SqliBasicAction {
 
 	public void setSexe(Boolean sexe) {
 		this.sexe = sexe;
-	}
-
-	public Boolean getSendEmail() {
-		return sendEmail;
-	}
-
-	public void setSendEmail(Boolean sendEmail) {
-		this.sendEmail = sendEmail;
 	}
 
 	@RequiredFieldValidator(shortCircuit=true)
