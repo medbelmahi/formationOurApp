@@ -305,6 +305,12 @@
     		<result name="error" type="redirectAction">sessionFormations</result>
     	</action>
     	
+    	<action name="updateSessionSeances" class="com.sqli.echallenge.formation.web.formateur.SessionSeanceUpdateAction">
+			<result name="success" type="redirectAction">sessionFormations</result>
+    		<result name="input" type="redirectAction">sessionFormations</result>
+    		<result name="error" type="redirectAction">sessionFormations</result>
+    	</action>
+    	
     </package>
     
      <package name="ajax" namespace="/ajax" extends="sqli_basic_package, json-default">

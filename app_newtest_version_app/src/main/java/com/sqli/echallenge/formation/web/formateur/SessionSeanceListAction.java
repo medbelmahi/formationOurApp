@@ -35,9 +35,7 @@ public class SessionSeanceListAction extends SqliBasicAction {
 			//check if idSessionFormation is for formateur
 			
 			//get list seance
-			seanceMetier.getAllSeancesOfSession(idSessionFormation);
-			
-			System.out.println("seanceMetier " + seances);
+			seances = seanceMetier.getAllSeancesOfSession(idSessionFormation);
 			
 			return ActionSupport.SUCCESS;
 			

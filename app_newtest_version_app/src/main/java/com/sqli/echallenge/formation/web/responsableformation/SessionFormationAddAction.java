@@ -3,6 +3,7 @@
  */
 package com.sqli.echallenge.formation.web.responsableformation;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,6 @@ public class SessionFormationAddAction extends SqliBasicAction {
 	private Date dateDebutSessionFormation;
 	private Date dateFinSessionFormation;
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public String execute() throws Exception {
 		try {
@@ -69,14 +69,27 @@ public class SessionFormationAddAction extends SqliBasicAction {
 			sf.setDateFinSessionFormation(dateFinSessionFormation);
 			
 			//addSeances to sessionFormation (seance per date)
-			for(Date date = new Date(dateDebutSessionFormation.getTime()); date.compareTo(dateFinSessionFormation)<0; date.setDate(date.getDate()+1)){
+			Calendar start = Calendar.getInstance();
+			start.setTime(dateDebutSessionFormation);
+			
+			Calendar end = Calendar.getInstance();
+			end.setTime(dateFinSessionFormation);
+			
+			int seanceNum = 1;
+			while (!start.after(end)) {
+				Date date = start.getTime();
+				
 				//Seance empty
 				Seance seance = new Seance();
 				seance.setDateSeance(date);
+				seance.setTitreSeance("Seance " + seanceNum++);//Generate session number
 				
 				//add seance to sessionFormation
 				sf.getSceances().add(seance);
 				seance.setSessionFormation(sf);
+				
+				//Increment start
+				start.add(Calendar.DATE, 1);
 			}
 			
 			sessionFormationMetier.addSessionFormation(sf);

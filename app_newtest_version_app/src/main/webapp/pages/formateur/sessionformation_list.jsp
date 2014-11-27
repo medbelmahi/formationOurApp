@@ -8,6 +8,17 @@
 </head>
 <body>
 
+	<!-- My version of Action Notifications -->
+	<s:if test="isSessionActionError()">
+		Error: <s:property value="sessionActionErrorText" />
+	</s:if>
+	<s:if test="isSessionMessageError()">
+		Message: <s:property value="sessionActionMessageText" />
+	</s:if>
+	<!-- End of Action Notifications -->
+
+	<br>
+
 <!-- table des session de formations du formateur -->
 <table width="100%" border="1">
 	<tr>
@@ -15,6 +26,7 @@
 		<td>Date de debut</td>
 		<td>Date de Fin</td>
 		<td>Lieu</td>
+		<td>Options</td>
 	</tr>
 	
 	<!-- iterate throwt sessions -->
@@ -24,16 +36,13 @@
 			<td><s:property value="dateDebutSessionFormation" /></td>
 			<td><s:property value="dateFinSessionFormation" /></td>
 			<td><s:property value="lieuSessionFormation" /></td>
+			<td>
+				<ul>
+					<li><a href='<s:url action="sessionDocuments" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Documents</a></li>
+					<li><a href='<s:url action="sessionSeances" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Seances</a></li>
+				</ul>
+			</td>
 		</tr>
-		<!-- iterate throwt seances -->
-		<s:iterator value="sceances">
-		<tr>
-			<td><s:property value="titreSeance" /></td>
-			<td><s:property value="dateDebutSessionFormation" /></td>
-			<td><s:property value="dateFinSessionFormation" /></td>
-			<td><s:property value="lieuSessionFormation" /></td>
-		</tr>
-		</s:iterator>
 	</s:iterator>
 	
 </table>
