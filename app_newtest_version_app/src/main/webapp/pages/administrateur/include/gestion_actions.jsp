@@ -29,6 +29,19 @@
 								</div>
 							</div>
 						</div>
+						<div class="col-lg-12 vcenter">
+							<div class="col-sm-12 icheck ">
+								<div class="square-green single-row col-sm-12">
+									<div class="checkbox col-sm-12" style="position: relative;">
+										<input type="checkbox" checked> <label
+											class="popovers" data-trigger="hover" data-placement="right"
+											data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+											data-original-title="Popovers in right">Green
+											Checkbox _ 1 </label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 
 

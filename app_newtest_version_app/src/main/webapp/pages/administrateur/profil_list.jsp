@@ -300,10 +300,10 @@
 		}
 		//remplir le modal d'affectation des Actions
 		function jsonGetProfil_pourAffectation(idProfil){
-			$.getJSON('<s:url action="getProfil" namespace="/ajax" />', {idProfil : idProfil}, function(jsonResponse) {
+			$.getJSON('<s:url action="getActions" namespace="/ajax" />', {id : idProfil}, function(jsonResponse) {
 				if(jsonResponse.status === "success"){
 					
-					//set inputs value from jsonResponse
+					/* //set inputs value from jsonResponse
 					document.getElementById("idProfil").value = jsonResponse.idProfil;
 					document.getElementById("inputProfilName").value = jsonResponse.nom;
 					document.getElementById("inputDescription").value = jsonResponse.description;
@@ -318,7 +318,7 @@
 							role[i].selected=false;
 						}
 					}
-					
+					 */
 					$('#myModal_action').modal('show');
 				}
 		  	});
