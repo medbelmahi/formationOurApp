@@ -397,9 +397,9 @@
 		    sOut += '<tr><td>Email:</td><td>'+aData[2]+'</td></tr>';
 		    sOut += '<tr><td>Telephone:</td><td>'+aData[3]+'</td></tr>';
 		    sOut += '<tr><td>Sexe:</td><td>'+aData[4]+'</td></tr>';
-		    sOut += '<tr><td>Adresse:</td><td>'+aData[6]+'</td></tr>';
-		    sOut += '<tr><td>Date de naissance:</td><td>'+aData[7]+'</td></tr>';
-		    sOut += '<tr><td>Profil:</td><td>'+aData[8]+'</td></tr>';
+		    sOut += '<tr><td>Adresse:</td><td>'+aData[7]+'</td></tr>';
+		    sOut += '<tr><td>Date de naissance:</td><td>'+aData[8]+'</td></tr>';
+		    sOut += '<tr><td>Profil:</td><td>'+aData[5]+'</td></tr>';
 		    sOut += '</table>';
 		
 		    return sOut;

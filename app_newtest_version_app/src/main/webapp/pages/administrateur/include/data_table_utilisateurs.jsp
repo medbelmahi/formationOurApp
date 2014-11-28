@@ -32,10 +32,10 @@
 									<th>Email</th>
 									<th>Telephone</th>
 									<th>Sexe</th>
+									<th>Profil</th>
 									<th>Options</th>
 									<th style="display: none;">Adresse</th>
 									<th style="display: none;">Date de naissance</th>
-									<th style="display: none;">Profil</th>
 									<th style="display: none;">image</th>
 								</tr>
 							</thead>
@@ -49,6 +49,10 @@
 												value="telephoneUtilisateur" /></td>
 										<td class="center hidden-phone "><s:property
 												value="sexeString" /></td>
+										<td>
+											<s:property
+												value="profil.getNomProfil()" />
+										</td>
 										<td class="center hidden-phone ">
 											<ul style="list-style: none;" class="navbar-nav nav-options">
 											
@@ -84,10 +88,6 @@
 												value="adresseUtilisateur" /></td>
 										<td style="display: none;"><s:property
 												value="dateNaissanceUtilisateur" /></td>
-										<td style="display: none;">
-											<s:property
-												value="profil.getNomProfil()" />
-										</td>
 										<td style="display: none;"><s:property
 												value="urlPhotoUtilisateur" /></td>
 									</tr>
