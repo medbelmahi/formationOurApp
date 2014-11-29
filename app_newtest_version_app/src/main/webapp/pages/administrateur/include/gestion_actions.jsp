@@ -13,10 +13,10 @@
 
                  <form class="form-horizontal adminex-form" action="updateProfilActions" role="form">
                  
-                 	<s:hidden name="id" /><!-- idProfil -->
+                 	<s:hidden name="id" id="idProfilAffectation" /><!-- idProfil -->
 
-					<div class="form-group">
-						<div class="col-lg-12 vcenter">
+					<div class="form-group" id="checkboxElement">
+						<!-- <div class="col-lg-12 vcenter">
 							<div class="col-sm-12 icheck ">
 								<div class="square-green single-row col-sm-12">
 									<div class="checkbox col-sm-12" style="position: relative;">
@@ -41,7 +41,9 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
+						
+						<!-- Actions -->
 					</div>
 
 

@@ -63,9 +63,10 @@ public class ProfilActionsListAjaxAction extends SqliBasicAction {
 				
 				actionBeans.add(ab);
 			}
+			
 			status = ActionSupport.SUCCESS;
 			
-			
+			System.out.println(status);
 		} catch (Exception e) {
 			setSessionActionErrorText(getText("profilActionList.error.loading.fail"));
 			
@@ -102,4 +103,14 @@ public class ProfilActionsListAjaxAction extends SqliBasicAction {
 		
 		return false;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 }

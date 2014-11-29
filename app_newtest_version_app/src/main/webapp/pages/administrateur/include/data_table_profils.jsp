@@ -80,7 +80,7 @@
 														</li>
 														<li style="padding-left: 15px;">
 															<a href='javascript:void(0);'
-															   onclick="jsonGetProfil_pourAffectation(<s:property value="idProfil"/>);" 
+															   onclick='jsonGetProfil_pourAffectation(<s:property value="idProfil"/>);' 
 															   title="Affectation des actions">
 																<i class="fa fa-bolt"></i>
 <%-- 																<li><a href='<s:url action="actions" ><s:param name="id"><s:property value="idProfil"/></s:param></s:url>'>Actions</a></li> --%>

@@ -303,22 +303,54 @@
 			$.getJSON('<s:url action="getActions" namespace="/ajax" />', {id : idProfil}, function(jsonResponse) {
 				if(jsonResponse.status === "success"){
 					
-					/* //set inputs value from jsonResponse
-					document.getElementById("idProfil").value = jsonResponse.idProfil;
-					document.getElementById("inputProfilName").value = jsonResponse.nom;
-					document.getElementById("inputDescription").value = jsonResponse.description;
 					
-					//select role option
-					var role = document.getElementById("inputRole");
+					//set inputs value from jsonResponse
+					document.getElementById("idProfilAffectation").value = jsonResponse.id;
 					
-					for(var i=0; i<role.length; i++){
-						if(jsonResponse.role == role[i].value){
-							role[i].selected=true;
+					var checkboxElementInnerHtml = "";
+					var stringTemp = "";
+					for(i = 0; i < jsonResponse.actionBeans.length; i++){
+						if(jsonResponse.actionBeans[i].checked){
+							stringTemp = '<div class="col-lg-12 vcenter">'
+										+'<div class="col-sm-12 icheck ">'
+										+'<div class="square-green single-row col-sm-12">'
+										+'<div class="checkbox col-sm-12" style="position: relative;">'
+										+'<input name="actions" value="'+jsonResponse.actionBeans[i].action.idAction+'" type="checkbox" checked>'
+										+'<label class="popovers" data-trigger="hover" data-placement="right" data-content="'+jsonResponse.actionBeans[i].action.descriptionAction+'" data-original-title="'+jsonResponse.actionBeans[i].action.nomAction+'">'
+										+jsonResponse.actionBeans[i].action.nomAction+' </label>'
+										+'</div>'
+										+'</div>'
+										+'</div>'
+										+'</div>';
 						}else{
-							role[i].selected=false;
+							stringTemp = '<div class="col-lg-12 vcenter">'
+								+'<div class="col-sm-12 icheck ">'
+								+'<div class="square-green single-row col-sm-12">'
+								+'<div class="checkbox col-sm-12" style="position: relative;">'
+								+'<input name="actions" value="'+jsonResponse.actionBeans[i].action.idAction+'" type="checkbox">'
+								+'<label class="popovers" data-trigger="hover" data-placement="right" data-content="'+jsonResponse.actionBeans[i].action.descriptionAction+'" data-original-title="'+jsonResponse.actionBeans[i].action.nomAction+'">'
+								+jsonResponse.actionBeans[i].action.nomAction+' </label>'
+								+'</div>'
+								+'</div>'
+								+'</div>'
+								+'</div>';
 						}
+						
+						checkboxElementInnerHtml += stringTemp;
 					}
-					 */
+					
+					var checkboxElement = document.getElementById("checkboxElement");
+					checkboxElement.innerHTML = checkboxElementInnerHtml;
+					
+					document.getElementById("profilTitle").innerHTML = "Affectation des action au profil ( "+jsonResponse.actionBeans[0].action.profils[0].nomProfil+" )";
+					 
+					 $.getScript('<s:url value="/js/icheck-init.js"/>', function(){
+					   // Here you can use anything you defined in the loaded script
+					});
+					// popovers
+
+				    $('.popovers').popover();
+					 
 					$('#myModal_action').modal('show');
 				}
 		  	});
