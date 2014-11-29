@@ -40,6 +40,7 @@
 				<ul>
 					<li><a href='<s:url action="sessionDocuments" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Documents</a></li>
 					<li><a href='<s:url action="sessionSeances" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Seances</a></li>
+					<li><a href='<s:url action="sessionSeances" ><s:param name="idSessionFormation"><s:property value="idSessionFormation"/></s:param></s:url>'>Absences</a></li>
 				</ul>
 			</td>
 		</tr>

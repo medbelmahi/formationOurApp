@@ -73,7 +73,7 @@ public class SessionSeanceUpdateAction extends SqliBasicAction {
 			setSessionActionMessageText(getText("sessionSeanceUpdate.message.update.success"));
 			return ActionSupport.SUCCESS;
 		}catch(Exception e){
-			
+
 			setSessionActionErrorText(getText("sessionSeanceUpdate.error.update.fail"));
 			return ActionSupport.SUCCESS;
 		}

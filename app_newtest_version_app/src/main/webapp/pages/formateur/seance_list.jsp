@@ -29,7 +29,7 @@
 		<input type="hidden" name="idSeance" value='<s:property value="idSeance" />' /><br>
 		Titre: <input type="text" name="titre" value='<s:property value="titreSeance" />' /><br>
 		Heure de debut: <input type="text" name="heureDebut" value='<s:property value="heureDebutSeance" />' /><br>
-		Heure de debut: <input type="text" name="heureFin" value='<s:property value="heureFinSeance" />' /><br>
+		Heure de Fin: <input type="text" name="heureFin" value='<s:property value="heureFinSeance" />' /><br>
 		Description: <textarea name="description" ><s:property value="descriptionSeance" /></textarea><br>
 		<hr>
 	</s:iterator>
