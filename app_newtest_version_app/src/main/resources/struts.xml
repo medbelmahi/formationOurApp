@@ -131,7 +131,7 @@
     	</action>
     	
     	<action name="deleteHabilitationScore" class="com.sqli.echallenge.formation.web.admin.HabilitationScoreDeleteAction">
-    		<result name="success">/pages/administrateur/habilitation_score_list.jsp</result>
+    		<result name="success" type="redirectAction">/administrateur/habilitationScores?id=${idCollaborateur}</result>
     		<result name="input" type="redirectAction">collaborateurs</result>
     		<result name="error" type="redirectAction">collaborateurs</result>
     	</action>

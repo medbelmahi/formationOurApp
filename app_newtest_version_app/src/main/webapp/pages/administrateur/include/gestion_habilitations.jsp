@@ -133,10 +133,16 @@
 																		<form id="update_habilitation_score" action="updateHabilitationScore" method="post" onsubmit="return jsonUpdateHabilitationScore();">
 																			<input id="theHabilitationScore_2" type="hidden" name="idHabilitation" value="" required="required">
 																			<input id="theScore_2" type="hidden" name="score" value="1" required="required">
-
-																			<button type="submit"
-																				class="btn btn-danger btn-lg btn-block">Mettre
+																			
+																			<button type="submit" name="actionButton" value="update"
+																				class="btn btn-warning btn-lg btn-block">Mettre
 																				à jour cette habilitation</button>
+																		</form>
+																		<form id="update_habilitation_score" action="deleteHabilitationScore" method="post">
+																			<input id="theHabilitationScore_3" type="hidden" name="id" value="" required="required">
+																			<button type="submit" name="actionButton" value="delete"
+																				class="btn btn-danger btn-lg btn-block">Supprimer
+																				cette habilitation</button>
 																		</form>
 																	</div>
 																</div>

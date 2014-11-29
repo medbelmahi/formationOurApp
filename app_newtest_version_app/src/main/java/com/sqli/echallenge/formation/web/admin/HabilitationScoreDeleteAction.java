@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.sqli.echallenge.formation.metier.HabilitationScoreMetier;
+import com.sqli.echallenge.formation.model.HabilitationScore;
 import com.sqli.echallenge.formation.web.SqliBasicAction;
 
 /**
@@ -24,9 +25,15 @@ public class HabilitationScoreDeleteAction extends SqliBasicAction {
 	//idHabilitationScore
 	private Long id;
 	
+	private Long idCollaborateur;
+	
 	@Override
 	public String execute() throws Exception {
 		try {
+			
+			HabilitationScore habilitationScore = habilitationScoreMetier.getHabilitationScore(id);
+			idCollaborateur = habilitationScore.getCollaborateur().getIdCollaborateur();
+			
 			habilitationScoreMetier.removeHabililitationScore(id);
 			
 			setSessionActionMessageText(getText("deleteHabilitationScore.message.delete.success"));
@@ -45,4 +52,14 @@ public class HabilitationScoreDeleteAction extends SqliBasicAction {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Long getIdCollaborateur() {
+		return idCollaborateur;
+	}
+
+	public void setIdCollaborateur(Long idCollaborateur) {
+		this.idCollaborateur = idCollaborateur;
+	}
+	
+	
 }

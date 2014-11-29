@@ -303,7 +303,6 @@
 			$.getJSON('<s:url action="getActions" namespace="/ajax" />', {id : idProfil}, function(jsonResponse) {
 				if(jsonResponse.status === "success"){
 					
-					
 					//set inputs value from jsonResponse
 					document.getElementById("idProfilAffectation").value = jsonResponse.id;
 					
@@ -344,11 +343,12 @@
 					
 					document.getElementById("profilTitle").innerHTML = "Affectation des action au profil ( "+jsonResponse.actionBeans[0].action.profils[0].nomProfil+" )";
 					 
+					//initialiser icheck
 					 $.getScript('<s:url value="/js/icheck-init.js"/>', function(){
 					   // Here you can use anything you defined in the loaded script
 					});
+					 
 					// popovers
-
 				    $('.popovers').popover();
 					 
 					$('#myModal_action').modal('show');

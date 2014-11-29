@@ -492,6 +492,7 @@
 			var id = str.substring(0,str.lastIndexOf("-"));
 			
 			document.getElementById('theHabilitationScore_2').value = id;
+			document.getElementById('theHabilitationScore_3').value = id;
 			var score = $(this).attr('data-score');
 			document.getElementById('theScore_2').value = score;
 			
