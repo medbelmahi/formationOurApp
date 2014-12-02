@@ -359,7 +359,7 @@
 	<!-- End Remplir Update Modal -->
 	
 	
-	<!-- Begin Initialisation du tableau utilisateur -->
+	<!-- Begin Initialisation du tableau des Action  -->
 	<script type="text/javascript">
 		function fnFormatDetails ( oTable, nTr )
 		{
@@ -377,7 +377,7 @@
 		    return sOut;
 		}
 	</script>
-	<!-- End Initialisation du tableau utilisateur -->
+	<!-- End Initialisation du tableau des Action  -->
 </body>
 </html>
 
