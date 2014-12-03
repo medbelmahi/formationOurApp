@@ -77,11 +77,32 @@
 												</li>
 											</ul> --%>
 											
-											<ul>
-												<li><a href='javascript:void(0);' onclick="jsonGetFormation(<s:property value="idFormation"/>);">Modifier</a></li>
-												<li><a href='<s:url action="deleteFormation" ><s:param name="idFormation"><s:property value="idFormation"/></s:param></s:url>'>Supprimer</a></li>
+											<ul style="list-style: none;" class="navbar-nav nav-options" >
+											<li style="padding-left: 15px;">
+													<a href='javascript:void(0);'
+													   onclick="jsonGetFormation(<s:property value="idFormation"/>);" 
+													   title="Mise à jour">
+														<i class="fa fa-pencil"></i>
+													</a>
+												</li>
 												
-												<li><a href='javascript:void(0);' onclick="updateSessionForm(<s:property value="idFormation"/>);">Add Sessions (+) </a></li>					
+												<li style="padding-left: 15px;">
+													<a data-href='<s:url action="deleteFormation" ><s:param name="idFormation"><s:property value="idFormation"/></s:param></s:url>' data-toggle="confirmation" data-original-title="" title="Supprimer ?" >
+														<i class="fa fa-times"></i>
+													</a>
+												</li>
+												
+												<li style="padding-left: 15px;">
+													<a href='javascript:void(0);'
+													   onclick="updateSessionForm(<s:property value="idFormation"/>);" 
+													   title="Ajouter session">
+														<i class="fa fa-plus"></i>
+													</a>
+												</li>
+
+<%-- 												<li><a href='javascript:void(0);' onclick="updateSessionForm(<s:property value="idFormation"/>);">Add Sessions (+) </a></li>					 --%>
+											
+											
 											</ul>
 										</td>
 										<%-- <td style="display: none;"><s:property

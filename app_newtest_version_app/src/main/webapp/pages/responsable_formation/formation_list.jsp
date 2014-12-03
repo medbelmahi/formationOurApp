@@ -99,7 +99,7 @@
     <div class="main-content" >
 
         <!-- header section start-->
-        	<s:include value="/administrateur/include/header_section.jsp"></s:include>
+        	<s:include value='/administrateur/include/header_section.jsp'></s:include>
         <!-- header section end-->
 
         <!-- page heading start-->
@@ -168,6 +168,9 @@
 				<s:include value="include/update_formation_modal.jsp"></s:include>
 			<!-- End Update Formation Modal Form -->
 			
+			<!-- Ajout Session Modal Form -->
+				<s:include value="include/ajout_session_modal.jsp"></s:include>
+			<!-- End Ajout Session Modal Form -->
 			
 			<%-- 
 			<!-- Data table des formations Start -->
@@ -184,9 +187,7 @@
 				<s:include value="include/update_session_modal.jsp"></s:include>
 			<!-- End Update Session Modal Form -->
 			
-			<!-- Ajout Session Modal Form -->
-				<s:include value="include/ajout_session_modal.jsp"></s:include>
-			<!-- End Ajout Session Modal Form -->
+			
 			 --%>
 			
 			
@@ -295,7 +296,7 @@
 	<script type="text/javascript" src='<s:url value="/js/gritter/js/jquery.gritter.js"/>'></script>
 	<script src='<s:url value="/js/gritter/js/gritter-init.js"/>' type="text/javascript"></script>
 	
-	<!-- Remplir Update Modal -->
+	<!-- Remplir Update Formation Modal -->
 		<script type="text/javascript">
 		
 		function jsonGetFormation(idFormation){
@@ -313,65 +314,18 @@
 		  	});
 		};
 		</script>
-	<!-- End Remplir Update Modal -->
+	<!-- End Remplir Update Formation Modal -->
 	
-	
-	<!-- Begin envoyer un message à un collaborateur utilisant ajax -->
-	<script type="text/javascript">
-		function jsonGetCollaborateur_forSendEmail(idCollaborateur){
-			//make ajax request to /ajax/getCollaborateur?idCollaborateur=x
-			$.getJSON('<s:url action="getCollaborateur" namespace="/ajax" />', {idCollaborateur : idCollaborateur}, function(jsonResponse) {
-				//if satuts == "success" , do
-				if(jsonResponse.status === "success"){
-					
-					//set inputs value from jsonResponse
-					document.getElementById("idCollaborateur_sendMessage").value = jsonResponse.idCollaborateur;
-					var fullName = jsonResponse.nom + " " + jsonResponse.prenom;
-					document.getElementById("fullnameTo").innerHTML = fullName;
-					document.getElementById("to").value = jsonResponse.email;
-	
-				}
-		  	});
-			
-			$('#sendMessageModal').modal('show');
-		};
-		
-		function sendMessageToCollaboroateur_ajax(){
-			var idCollaborateur = document.getElementById("idCollaborateur_sendMessage").value;
-			var object = document.getElementById("subject").value;
-			var msg = document.getElementById("msg_").value;
-			
-			if(idCollaborateur != "" && object != "" && msg != ""){
-				$('#sendMessageModal').modal('hide');
-				$.getJSON('<s:url action="sendEmailToCollaborateurAjax" namespace="/ajax" />', {id : idCollaborateur, object : object, msg : msg}, function(jsonResponse) {
-					//if satuts == "success" , do
-					if(jsonResponse.status === "success"){
-						
-						$.gritter.add({
-				            // (string | mandatory) the heading of the notification
-				            title: 'Message !',
-				            // (string | mandatory) the text inside the notification
-				            text: 'Le message ("'+jsonResponse.object+'") été bien envoyé à '+jsonResponse.collaborateur.fullname+' .'
-				            
-				        });
-						
-						
-						//vider les champs :
-							document.getElementById("subject").value = "";
-							document.getElementById("msg_").value = "";
-// 						console.log(jsonResponse);
-					}else
-						{
-							alert("message nn envoyé");
-						}
-			  	});
-			}else
-				{
-					alert("remplir tout les champ");
-				}
-		}
-	</script>
-	<!-- End envoyer un message à un collaborateur utilisant ajax -->
+	<!-- Begin show the add session modal -->
+		<script type="text/javascript">
+			function updateSessionForm(idFormation){
+				
+				document.getElementById("idFormation_session").value = idFormation;
+				
+				$('#addSessionModal').modal('show');
+			}
+		</script>
+	<!-- End show the add session modal -->
 	
 	
 	<!-- Begin DownUp panel -->
