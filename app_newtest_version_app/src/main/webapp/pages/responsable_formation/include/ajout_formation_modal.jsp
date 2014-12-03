@@ -21,9 +21,9 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="inputAdress_2" class="col-sm-2 col-sm-2 control-label">Description</label> 
+							<label for="inputdescriptionFormation_2" class="col-sm-2 col-sm-2 control-label">Description</label> 
 							<div class="col-sm-10">
-								<input autocomplete="off" name="descriptionFormation" class="form-control" id="inputdescriptionFormation_2" placeholder="Ex : Casablanca Rue 10 N80" type="text">
+								<input autocomplete="off" name="descriptionFormation" class="form-control" id="inputdescriptionFormation_2" placeholder="Ex : atelier de programmation JEE" type="text">
 							</div>
 						</div>
 

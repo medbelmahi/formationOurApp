@@ -164,6 +164,11 @@
 				<s:include value="include/ajout_formation_modal.jsp"></s:include>
 			<!-- End Ajout Formation Modal Form -->
 			
+			<!-- Update Formation Modal Form -->
+				<s:include value="include/update_formation_modal.jsp"></s:include>
+			<!-- End Update Formation Modal Form -->
+			
+			
 			<%-- 
 			<!-- Data table des formations Start -->
 				<s:include value="include/data_table_sessions.jsp"></s:include>
@@ -292,43 +297,20 @@
 	
 	<!-- Remplir Update Modal -->
 		<script type="text/javascript">
-		function jsonGetCollaborateur(idCollaborateur){
-			//make ajax request to /ajax/getCollaborateur?idCollaborateur=x
-			$.getJSON('<s:url action="getCollaborateur" namespace="/ajax" />', {idCollaborateur : idCollaborateur}, function(jsonResponse) {
-				//if satuts == "success" , do
+		
+		function jsonGetFormation(idFormation){
+			$.getJSON('<s:url action="getFormation" namespace="/ajax" />', {idFormation : idFormation}, function(jsonResponse) {
 				if(jsonResponse.status === "success"){
-					//get update Form			
-					var updateForm = document.getElementById("update_collaborateur");
-					
+
 					//set inputs value from jsonResponse
-					document.getElementById("idCollaborateur").value = jsonResponse.idCollaborateur;
-					document.getElementById("inputLastName").value = jsonResponse.nom;
-					document.getElementById("inputFirstName").value = jsonResponse.prenom;
-					document.getElementById("inputEmail").value = jsonResponse.email;
-					document.getElementById("inputTelephone").value = jsonResponse.telephone;
-					document.getElementById("inputDateNaissance").value = jsonResponse.dateNaissance;
-					document.getElementById("inputAdress").value = jsonResponse.adresse; 
+					document.getElementById("idFormation").value = jsonResponse.idFormation;
+					document.getElementById("inputTitreFormation").value = jsonResponse.titreFormation;
+					document.getElementById("inputdescriptionFormation").value = jsonResponse.descriptionFormation;
 					
-					//check sexe option
-					if(jsonResponse.sexe == "true"){
-						document.getElementById("optionHomme").checked = true;
-						document.getElementById("optionFemme").checked = false;
-						var elementGreen = $(".iradio_square-green");
-						var elementRed = $(".iradio_square-red");
-						elementGreen.addClass("checked");
-						elementRed.removeClass("checked");
-					}else{
-						document.getElementById("optionFemme").checked = true;
-						document.getElementById("optionHomme").checked = false;
-						var elementRed = $(".iradio_square-red");
-						var elementGreen = $(".iradio_square-green");
-						elementRed.addClass("checked");
-						elementGreen.removeClass("checked");
-					}
+					
+					$('#updateFormationModal').modal('show');
 				}
 		  	});
-			
-			$('#updateModal').modal('show');
 		};
 		</script>
 	<!-- End Remplir Update Modal -->
